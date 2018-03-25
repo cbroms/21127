@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+\title{21-127 Homework 3}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+
+Complete the following problems. Fully justify each response.
+
+\begin{enumerate}
+
+\item Prove that for any $n\in\N$, $4^n+6n-1$ is divisible by 9.
+
+\begin{proof}
+
+Base Case: let $n = 0$ so $4^0 + 6(0) - 1 = 0 = 9(0)$ which is divisible by 9. \hfill \break \break
+Induction Hypothesis: suppose $4^n+6n-1$ is divisible by 9 for some $n \in \N$, so $4^n+6n-1 = 9k$, with $k \in \Z$. \hfill \break \break
+We will show $4^{n+1} + 6(n+1) - 1$ is divisible by 9. 
+\begin{align*}
+&= 4^{n+1} + 6(n+1) - 1\\
+&= 4^{n+1} + 6n + 6 - 1\\
+&= 4 \cdot 4^{n} + 6n + 6 - 1 \\
+&= 4 \cdot (9k - 6n + 1) + 6n + 6 - 1 && \text{By I.H.}\\
+&= 36k - 24n + 4 + 6n + 6 - 1 \\
+&= 36k - 18n + 9 \\
+&= 9(4k - 2n + 1) 
+\end{align*}
+Thus, for any $n\in\N$, $4^n+6n-1$ is divisible by 9.
+\end{proof}
+
+
+\item Prove that for any $n\in\N$, \[\displaystyle\prod_{i=0}^{n-1} (2i+1) = \frac{(2n)!}{2^nn!}.\]
+
+\begin{proof}
+Base Case: let $n = 1$ so $\displaystyle\prod_{i=0}^{1-1} (2(0)+1) =1 = \frac{(2\cdot0)!}{2^0 \cdot 0!} = \frac{0!}{0!} = 1$. \hfill \break \break
+Induction Hypothesis: Suppose $\displaystyle\prod_{i=0}^{k-1} (2i+1) = \frac{(2k)!}{2^kk!}$ for any $k \in \N$. We need to show that $\displaystyle\prod_{i=0}^{k} (2i+1) = \frac{(2(k + 1))!}{2^{k+1}(k+1)!}$ Solving 
+\begin{align*}
+\displaystyle\prod_{i=0}^{(k+1)-1} (2i+1) &= (2(k) + 1) \cdot \left(\prod_{i=0}^{k-1} (2i+1)\right) \\
+\displaystyle\prod_{i=0}^{k} (2i+1)&= (2k + 1) \cdot \left(\frac{(2k)!}{2^kk!}\right) && \text{By I.H.} \\
+&= \frac{(2k + 1)!}{2^kk!} \\
+&= \frac{(2k + 1)!}{2^kk!} \cdot \frac{2(k + 1)}{2(k + 1)} \\
+&= \frac{(2(k + 1))!}{2 \cdot 2^k \cdot (k+ 1) \cdot k!} \\
+&= \frac{(2(k + 1))!}{2^{k+1}(k+1)!}
+\end{align*}
+Because $\displaystyle\prod_{i=0}^{k} (2i+1) = \frac{(2(k + 1))!}{2^{k+1}(k+1)!}$ we have therefore proven that $\displaystyle\prod_{i=0}^{k-1} (2i+1) = \frac{(2k)!}{2^kk!}$ for any $k \in \N$.
+\end{proof}
+
+\item Prove the following theorem in 2 ways, first by induction on $n$, and second by the Binomial Theorem.
+
+\begin{quote}
+For any $n\in \N$, we have $\displaystyle\sum_{i=0}^n {n\choose i}(-1)^i=0$.
+\end{quote}
+
+\begin{proof} Using induction on $n$.\hfill \break \break
+Base case: Let $n = 1$ so $\displaystyle\sum_{i=0}^1 {1\choose 0}(-1)^0=0$. \hfill \break \break
+Induction Hypothesis: Assume $\displaystyle\sum_{i=0}^n {n\choose i}(-1)^i=0$. \hfill \break \break
+We want to show that $\sum_{i=0}^{n + 1} {n+1\choose i}(-1)^i = 0$. Simplifying: 
+\begin{align*}
+&= \sum_{i=0}^{n + 1} {n+1\choose i}(-1)^i \\
+&= \sum_{i=1}^{n} \left[{n\choose i - 1} + {n\choose i}\right](-1)^i + {n +1 \choose 0}(-1)^0 + {n +1 \choose n+1}(-1)^{n+1} \\
+&= \sum_{i=1}^{n } \left[{n\choose i - 1} + {n\choose i}\right](-1)^i + 1 + (-1)^{n+1} \\
+&= \sum_{i=1}^{n } {n\choose i - 1}(-1)^i + {n\choose i}(-1)^i + 1 + (-1)^{n+1} \\
+&= (-1)\sum_{i=0}^{n - 1} {n\choose i}(-1)^{i+1} + \sum_{i=1}^{n}{n\choose i}(-1)^i + 1 + (-1)^{n+1} \\
+&= \sum_{i=0}^{n} (-1){n\choose n}(-1)^{i} + -1 + 1 + (-1)^{n+1} \\
+&= (-1)^n + -1 + 1 + (-1)^{n+1} \\
+&= (-1)^n (-1 + 1) \\
+&= 0
+\end{align*}
+Hence, because we have shown that $\sum_{i=0}^{n + 1} {n+1\choose i}(-1)^i = 0$, our assumption is validated and the induction holds. 
+\end{proof}
+
+\begin{proof} Using binomial theorem. \hfill \break \break
+We can write the binomial theorem and reduce as follows:
+\begin{align*}
+(x + y)^n &= \sum_{i=0}^{n} {n\choose i}(x^i)(y^{n-i}) \\
+(-1 + 1)^n &= \sum_{i=0}^{n} {n\choose i}(-1^i)(1^{n-i}) \\
+(-1 + 1)^n &= \sum_{i=0}^{n} {n\choose i}(-1^i) \\
+0 &= \sum_{i=0}^{n} {n\choose i}(-1^i) \\
+\end{align*}
+\end{proof}
+
+\item Suppose we play a game where there are 2 players. The game is as follows: first, make two nonempty piles of pennies. On each player's turn, they may remove as many pennies as they like from one of the piles (but not 0). The player who removes the last penny wins the game.
+
+Prove that if the two piles initially contain the exact same number of pennies, then the second player can always win the game. Prove that if the two piles initially contain different numbers of pennies, then the first player can always win the game.
+
+\begin{proof}
+First, we will prove that if the two piles initially contain the exact same number of pennies, then the second player can always win the game. Let there be two piles of $n$ pennies, and it is the first player's turn. In the base case, $n=0$, and the first player looses because they are not able to remove any pennies. Thus, the second player wins and the case holds. 
+\hfill\break\break
+Induction Hypothesis: Assume that if there are two piles of $n$ pennies and it is the first player's turn, then the second player can always win.
+\hfill\break\break
+There are two identical piles, and the first player removes $k$ pennies from one of them, where $0 < k <= n$. Thus, one of the piles has $n$ pennies and other has $n-k$. It is now the second player's turn, and they remove the same $k$ pennies from the pile containing $n$, so that now both piles have $n-k$ pennies. Therefore, by the induction hypothesis, the second player wins, as there are now two equal piles of $n-k$ pennies.
+\hfill\break\break
+Now, we will prove that if the two piles initially contain different numbers of pennies, then the first player can always win the game, using the proof above. The first player must spend their first turn by removing pennies from the pile with the most, such that both piles have an equal number of $n$ pennies. Then, the game starts as described above, with the first and second players positions switched, such that the first player in this case plays as the second would have above, removing $k$ pennies from the pile with $n$, evening both out to $n-k$. By the proof above, the first player must win. 
+
+\end{proof}
+
+\item Write truth tables for $p\wedge(q\wedge r)$ and $p\wedge(q\vee r)$. Where do they differ? Why?
+
+\begin{proof}
+
+\begin{displaymath} 
+\begin{array}{|c|c|c|c|c|c|c|}\hline
+    P & Q & R & Q \wedge R & P\wedge(Q\wedge R) & Q \vee R & P\wedge(Q\vee R)\\\hline\hline
+    T & T & T & T & \mathbf{T} & T & \mathbf{T}\\\hline
+    F & T & T & T & \mathbf{F} & T & \mathbf{F}\\\hline
+    T & F & T & F & \mathbf{F} & T & \mathbf{T}\\\hline
+    F & F & T & F & \mathbf{F} & T & \mathbf{F}\\\hline
+    T & T & F & F & \mathbf{F} & T & \mathbf{T}\\\hline
+    F & T & F & F & \mathbf{F} & T & \mathbf{F}\\\hline
+    T & F & F & F & \mathbf{F} & F & \mathbf{F}\\\hline
+    F & F & F & F & \mathbf{F} & F & \mathbf{F}\\\hline
+\end{array}
+\end{displaymath}
+Both logical statements are similar in that they depend on the value of $P$ for the final truth value. The interior parts are the opposite, with one requiring a disjunction and the other a conjunction. These values, in columns 4 and 6, are inverse of each other. Because both are then in a conjunction with $P$, the outcome does not remain inverse. 
+\end{proof}
+
+\item Prove part (b) of Theorem 2.1.14 (De Morgan's Law).
+
+\begin{proof}
+Consider the following truth table:
+
+\begin{displaymath} 
+\begin{array}{|c|c|c|c|c|c|c|}\hline
+    P & Q  & P \wedge Q & \neg(P \wedge Q) & \neg P & \neg Q & \neg(P)\vee \neg(Q)\\\hline\hline
+    T & T  & T & \mathbf{F} & F & F & \mathbf{F}\\\hline
+    F & T  & F & \mathbf{T} & T & F & \mathbf{T}\\\hline
+    T & F  & F & \mathbf{T} & F & T & \mathbf{T}\\\hline
+    F & F  & F & \mathbf{T} & T & T & \mathbf{T}\\\hline
+\end{array}
+\end{displaymath}
+Notice that columns containing the values for $\neg(P \wedge Q)$ and $\neg(P)\vee \neg(Q)$ are identical, and hence the two are equivalent. 
+
+\end{proof}
+
+\end{enumerate}
+
+
+\end{document}

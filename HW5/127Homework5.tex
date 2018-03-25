@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+\title{21-127 Homework 5}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+
+Complete the following problems. Fully justify each response.
+
+\begin{enumerate}
+
+\item Let $X, Y, Z$ be sets, with $X,Y\subseteq Z$. Prove that \[\left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X\ba Y) = Z\ba Y.\]
+
+\begin{proof}
+
+($\subseteq$) If we let $z \in \left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X \ba Y)$ then $z \in \left[ (Z\ba X)\cap (Z\ba Y)\right] $ or $ z \in (X \ba Y)$ Then, $(z \in Z $ and $ z \notin X$ and $ z\notin Y) $ or $ (z \in X $ and $ z \notin Y)$. In the second part, when $(z \in X $ and $ z \notin Y)$, since $X \subseteq Z$, and $z \in X$, we know that $z \in Z$. In the first part, when $(z \in Z $ and $ z \notin X$ and $ z\notin Y) $, we know $z \in Z$ and $z \notin Y$.
+Hence, we know that $z \in Z$ and $z \notin Y$ in both cases. Therefore, $z \in Z \ba Y$ by definition, since $z \in Z$ and $z \notin Y$. Thus, we conclude, $\left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X\ba Y) \subseteq Z\ba Y$ \hfill \break \break
+($\supseteq$) If we let $z \in Z \ba Y$, then $z \in Z$ and $z \notin Y$. Since $X \subseteq Z$, and $z \in Z$, then $z \in X$ or $z \notin X$. In the first case, when $z \in X$, we can say $z \in X \ba Y$, because $z \in X$ and $z \notin Y$ In the second case, when $z \notin X$, and we know $z \notin Y$, we can say $z \notin X \cup Y$. Since $z\in Z$, then $z \in Z \ba (X \cup Y)$. So, combining the two cases, we have $z \in Z \ba (X \cup Y)$ or $z \in X \ba Y$, so $z \in [Z \ba (X \cup Y)] \cup (X \ba Y)$. By DeMorgan's laws, we can expand this to $z \in \left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X\ba Y)$. We have shown that $ (Z \ba Y)\subseteq  \left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X\ba Y)$. \hfill \break \break
+Since we have shown two sides of containment, we can conclude that $\left[ (Z\ba X)\cap (Z\ba Y)\right] \cup (X\ba Y) = Z\ba Y.$
+\end{proof}
+
+\item Let $X$ be a set. Prove that $X\times \emptyset = \emptyset$.
+\begin{proof}
+By definition, the Cartesian Product is defined as $X\times Y = \{(x,y)\ |\ x \in X, y \in Y\}$. Thus, when we consider $Y = \emptyset$, it is impossible to create an ordered pair $(x, y)$ with $x \in X, y \in Y$, because by definition of the empty set, there are no elements in $Y$. Thus, we cannot create such an ordered pair and $X \times \emptyset = \emptyset$.
+\end{proof}
+
+\item Let $X, Y, Z$ be sets. Is it true that $X\times (Y\times Z) = (X\times Y)\times Z$? Explain your answer with a proof or a counterexample.
+
+False. Consider the following counterexample: Let $X = \{1\}, Y = \{2\}, Z = \{3\}$. We calculate $X\times (Y\times Z)$ as $X\times \{(2, 3)\} = \{(1, (2,3))\}$. Now, calculating $(X\times Y)\times Z$ as $\{(1,2)\}\times Z= \{(3, (1,2))\}$. Thus, $\{(1, (2,3))\} \neq \{(3, (1,2))\}$ and therefore $X\times (Y\times Z) \neq (X\times Y)\times Z$.
+
+\item For each of the following subsets $G$ of $X\times Y$, determine if the subset represents the graph of a function from $X\to Y$. If so, specify the function.
+\begin{enumerate}
+\item $X=\R$, $Y=\R$, $G = \{(x, x+1)\ |\ x\in \R\}$.
+
+Yes, $f:X \to Y$, defined by $f(x) = x + 1$
+\item $X=\R$, $y=\R$, $G=\{(x^2, x)\ | \ x\in \R\}$.
+
+No. $f:X \to Y$, defined by $f(x) = \sqrt[]{x}$ violates the condidion of existence. Changing to domain to be only positive reals would fix. 
+\item $X=\R^+$, $y=\R^+$, $G=\{(x^2, x)\ | \ x\in \R^+\}$.
+
+Yes, $f:X \to Y$, defined by $f(x) = \sqrt[]{x}$
+\item $X=\Q$, $y=\Q$, $G=\{(x, y\ | \ x, y\in \Q\hbox{ and }xy=1\}$.
+
+No. $f:X \to Y$, defined by $f(x) = \frac{1}{x}$ is undefined when $x=0$. You could remove $0$ from the domain to fix this issue. 
+\end{enumerate}
+
+\item Which of the following function specifications are well-defined? If one is not well-defined, determine a modification to the specification that would rectify the issue.
+\begin{enumerate}
+\item $g:\Q\to\Q$ defined by $g(x)(x+1)=2$.
+
+Does not exist at -1, and thus violates the condition of totality. We can fix by redefining: 
+\[ g(x) =  \begin{cases} 
+      \frac{2}{x + 1} & x\neq -1 \\
+      2 & x = -1 \\
+   \end{cases}
+\]
+\item $f:\Q\to\R$ defined by $f(x)(x+\pi)=1$.
+
+Well Defined. 
+\item $h:\R\to\R$ defined by $h(x)=\sqrt{x}$.
+
+No, violates the condition of existence. We can fix by redefining the domain: $h:\R^+ \to \R^+$
+\item $\ell:\C\to \C$ defined by $\ell(x)=\sqrt{x}$.
+
+Well-defined. 
+\end{enumerate}
+
+\item Let $f, g, h, \ell: \R\to \R$ be functions with the following specifications:
+\[ f(x)=x+2;\quad g(x)=x^2; \quad h(x)=\frac{1}{x^2+1}; \quad \ell(x)=-x.\]
+Write a specification, via a single equation, for each of the following:
+\begin{enumerate}
+\item $f\circ g = x^2 + 2$.
+\item $g\circ f = (x+2)^2$.
+\item $f\circ(g\circ(h\circ \ell)) = (\frac{1}{-x^2 + 1})^2 + 2$.
+\item $(f\circ g)\circ (h\circ \ell) = (\frac{1}{-x^2 + 1})^2 + 2$.
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

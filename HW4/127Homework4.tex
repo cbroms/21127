@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+\title{21-127 Homework 4}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+
+\begin{enumerate}
+
+\item Let $p$ and $q$ be propositional variables. Prove that $p\iff q$ is logically equivalent to $\neg\left( ((\neg p)\wedge q)\vee (p\wedge (\neg q))  \right)$.
+
+\begin{proof} Consider the following truth table:
+\begin{displaymath}
+\begin{array}{|c|c|c|c|c|c}\hline
+P & Q & ((\neg P) \wedge Q) & (P \wedge (\neg Q))& \neg(((\neg P) \wedge Q) \vee (P \wedge (\neg Q))) & P \iff Q\\\hline\hline
+T & T & F & F & T & T\\\hline
+F & T & T & F & F & F\\\hline
+T & F & F & T & F & F\\\hline
+F & F & F & F & T & T\\\hline
+\end{array}
+\end{displaymath}
+Notice that the last two columns have the same truth values, so we can conclude $(p\iff q) \sim \neg\left( ((\neg p)\wedge q)\vee (p\wedge (\neg q))  \right)$ 
+\end{proof}
+
+\item Suppose it is known that every continuous function on a closed interval $[a,b]$ in $\R$ has a maximum value. Now, suppose I have a function $f$, which I tell you has a maximum value on the interval $[a,b]$. What can you conclude about the continuity of $f$? Use the language of propositional logic to explain your answer.
+
+We cannot conclude that $f$ is a continuous function given the information provided. We know that $f$ is continuous on closed interval $[a, b]$ in $\R \Rightarrow f$ has a maximum value, but we cannot conclude that $f$ has a maximum value on $[a, b] \Rightarrow f$ is continuous. The original statement would have to be if and only if in order to be able to conclude this. 
+
+\item Let $p(x, y)$ be the statement that $xy=1$. Suppose that $x$ is a member of the positive integers $\{1, 2, 3, \dots\}$ and $y$ is a member of the rationals. Consider the following two statements:
+\begin{enumerate}
+\item $\forall x, \exists y, p(x,y)$
+
+This is true. If we take some arbitrary positive non-zero number $x \in \Z$, then we can construct a specfic rational number $y = \frac{1}{x}$ such that $xy = 1$. 
+\item $\exists y, \forall x, p(x, y)$
+
+False. 
+\end{enumerate}
+How do these statements differ? Are either of them true?
+
+The two statements are different in the quantifiers of $x$ and $y$. In the first, the task was to find some specific rational number that when multiplied with any integer, yields 1. That rational number can be defined as $\frac{1}{x}$ for all positive non-zero integers $x$. In the second statement, the task was to find some specific integer that when multiplied with any rational, yields 1. Certainly, such pairings exist, but not for every possible rational number. Thus, the second statement cannot be considered true.
+
+\item For each of the following statements about sets, determine if the statement is true or false. If true, prove the statement. If false, explain why.
+\begin{enumerate}
+\item For any set $X$, $\emptyset\in X$.
+
+This is false. The empty set is not an element of any given set. A set might be defined as $X = \{1, 2\}$. This set contains the elements $1$ and $2$ and does not contain $\emptyset$. 
+\item For any set $X$, $\emptyset\subseteq X$.
+
+True. Suppose, conversely, that $\emptyset \subsetneq X$. In this case there exists $x \in \emptyset$ such that $x \notin X$, which is untrue because $\emptyset$ cannot contain any elements. Therefore, it must be that $\emptyset\subseteq X$.
+\item $\{x\in \Z\ | \ x\geq 0\} = \N$.
+
+True. $\N$ is defined as all integers greater than and equal to 0. 
+\item $\emptyset \subseteq \mathcal{P}(\emptyset)$.
+
+True. Since $\mathcal{P}(\emptyset) = \{\emptyset\}$, this set has one element, $\emptyset$. Therefore, since $\emptyset$ is a subset of any set, we can conclude that $\emptyset \subseteq \mathcal{P}(\emptyset)$.
+\item $\emptyset \in \mathcal{P}(\emptyset)$.
+
+True. As shown above, $\mathcal{P}(\emptyset) = \{\emptyset\}$, and we have a set with one element, $\emptyset$. Thus, $\emptyset \in \mathcal{P}(\emptyset)$.
+\end{enumerate}
+
+\item Prove that $X\subseteq Y$ if and only if $X\cap Y = X$.
+\begin{proof}
+(To show: $X \subseteq Y \Rightarrow X \cap Y = X$) Assume $X \subseteq Y$. Let $x \in X \cap Y$ so $x \in X$ and $x \in Y$, so therefore since $x \in X$, $X \cap Y \subseteq X$. If $x \in X$ and $x \in Y$, we know $x \in X \cap Y$. Thus, $X \subseteq X \cap Y$ and we can therefore conclude $X = X \cap Y$ and have shown $X \subseteq Y \Rightarrow X \cap Y = X$.  \hfill \break \break
+(To show: $X \cap Y = X \Rightarrow X \subseteq Y$)
+ Assume $X \cap Y = X$. If we let $x \in X$, then $x \in X \cap Y$ and $x \in X$ and $x \in Y$, so we know $X \subseteq Y$. We have shown that $X \cap Y = X \Rightarrow X \subseteq Y$. \hfill \break 
+
+Therefore, since we have proved both directions of implication, we can conclude that $X\subseteq Y \iff X\cap Y = X$
+\end{proof}
+
+\item Prove that $X\cup(Y\cap Z) = (X\cup Y)\cap (X\cup Z)$.
+
+\begin{proof}
+(To show: $X\cup(Y\cap Z) \subseteq (X\cup Y)\cap (X\cup Z)$). We know $Y \cap Z \subseteq Z$ and $Y \cap Z \subseteq Y$. Therefore, it follows $X\cup(Y\cap Z) \subseteq X \cup Y$ and $X\cup(Y\cap Z) \subseteq X \cup Z$. Thus, we can safely say $X\cup(Y\cap Z)\subseteq (X \cup Y) \cap (X \cup Z)$. \hfill \break
+
+(To show: $(X\cup Y)\cap (X\cup Z) \subseteq X\cup(Y\cap Z)$). If we let $x \in (X\cup Y)\cap (X\cup Z)$, then $x \in X$ and $x \in X\cup(Y\cap Z)$ and we're done, or $x \notin X$. In this case, $x \in Y, Z$ and $x \in (Y \cap Z)$, then we know $x \in X\cup(Y\cap Z)$. We now know $x \in X\cup(Y\cap Z)$, and thus can say $(X\cup Y)\cap (X\cup Z) \subseteq X\cup(Y\cap Z)$. \hfill \break  
+
+Since we have proved both directions of containment, we can conclude that $X\cup(Y\cap Z) = (X\cup Y)\cap (X\cup Z)$.
+\end{proof}
+\end{enumerate}
+
+
+\end{document}

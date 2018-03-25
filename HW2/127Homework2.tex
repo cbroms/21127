@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+\title{21-127 Homework 2}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+Complete the following problems. Fully justify each response.
+
+\begin{enumerate}
+
+\item Let $n$ be a natural number. Prove that $n$ is divisible by 3 if and only if the sum of the base-10 digits of $n$ is divisible by 3.
+\begin{proof}
+We can express $n$ in its base 10 expansion as:
+\begin{align*}
+n &= d_0\cdot10^0 + d_1\cdot10^1 + d_2\cdot10^2 + ... + d_n\cdot10^n
+\end{align*}
+The sum of the digits in $n$ can be expressed as: 
+\begin{align*}
+s &= d_0 + d_1 + d_2 + ... + d_n
+\end{align*}
+Now, subtracting the sum of the digits from $n$:
+\begin{align*}
+n - s &= (d_0\cdot10^0 - d_0) + (d_1\cdot10^1 - d_1) + (d_2\cdot10^2 - d_2) + ... + (d_n\cdot10^n - d_n) \\
+n - s &= 0 + d_1(10^1 - 1) + d_2(10^2 - 1) + ... + d_n(10^n - 1)
+\end{align*}
+If we let $r_n = 10^n - 1$, then:
+\begin{align*}
+n - s &= d_1(r_1) + d_2(r_2) + ... + d_n(r_n)
+\end{align*}
+Because $r_n = 10^n - 1$, every digit of $r_n$ will be 9, which is divisible by 3. Therfore, all $d_n \cdot r_n$ is also divisible by 3. Thus, the sum of all these digits, which is $n - s$, is also divisible by 3. Hence $n$ is divisible by 3 $\iff$ the sum of its base-10 digits is also divisible by 3.
+
+\end{proof}
+\item Let $x\in \R$. Prove that if $x\neq 0$, then $x^2>0$.
+\begin{proof} There are two cases when $x\in \R$ and $x\neq 0$. In the first case, $ x > 0$. We can multiply by $x$:
+\begin{align*}
+x &> 0 \\
+x \cdot x &> 0 \cdot x \\
+x^2 &> 0
+\end{align*}
+Therefore, we know that $x^2 > 0$ when $x > 0$. In the second case, $x < 0$.
+\begin{align*}
+x &< 0 \\
+-(x) &> 0 \\
+-x \cdot -x &> 0 \cdot -x \\
+(-x)^2 &> 0
+\end{align*}
+Thus, when $x < 0$, $x^2 > 0$ still holds true . 
+\end{proof}
+\item Let $x$ be an irrational number. Prove that $\frac{1}{x}$ and $-x$ are both irrational.
+\begin{proof}
+First we will establish that if $x$ is an irrational number, then $\frac{1}{x}$ is irrational. Assume that $x$ is irrational, but $\frac{1}{x}$ is rational, such that $\frac{1}{x} = \frac{p}{q}$ where $p, q \in \Z$, $p, q \neq 0$. Therefore, $x = \frac{q}{p}$, and we have a contradiction, because $x$ can be expressed as the ratio of two integers. Thus, it holds that if $x$ is irrational, then $\frac{1}{x}$ must also be irrational. 
+\hfill \break \hfill \break
+Now we will prove that if $x$ is irrational, then $-x$ is also irrational. Assume that $x$ is irrational, but $-x$ is rational, such that $-x = \frac{p}{q}$, where $p, q \in \Z$. We can multiply each side by $-1$ such that $x = -(\frac{p}{q}) = \frac{-p}{q}$, and we have a contradiction, because $x$ can be expressed as the ratio of two integers, $-p$ and $q$. Thus, it holds that if $x$ is irrational, then $-x$ must also be irrational. 
+\end{proof}
+
+\item Prove that for any real number $x\in \R$, there exists a real number $y\in \R$ such that $x+y\in \Z$.
+
+\begin{proof}
+If we have $x, y \in \R$, and $a \in \Z$, let $x = a - y$, such that the difference of $a$ and $y$ yields a real number. Rearranging, we have $a = x + y$, such that the sum of $x$ and $y$ is an integer, $a \in \Z$. Therefore, for any $x \in \R$, $\exists y \in \R$ such that $x + y \in \Z$.
+\end{proof}
+
+\item Let $p(n)$ be the statement ``$2n+1$ is divisible by $3$,'' for $n\in \N$. Prove that for any $n\in \N$, $p(3n+1)$ is true, and $p(3n)$ and $p(3n+2)$ are false. (Note: this is Exercise 1.3.9 on page 50. There is some further discussion there about the statement $p(n)$.)
+
+\begin{proof}
+We know $p(n) = 2n + 1$ is divisible by 3. First, we will prove $p(3n + 1)$ to be true. In the base case:
+\begin{align*}
+p(1) &= 2(1) + 1 = 3
+\end{align*}
+Which is divisible by 3. Let $p(m) = 2(3m + 1) + 1$ and assume that this is divisible by three. We will show that $p(m + 1)$ is true $\forall m \in \N$:
+\begin{align*}
+p(m) &= 6m + 3 \\
+p(m + 1) &= 6(m + 1) + 3 \\
+p(m + 1) &= (6m + 6) + 3 \\
+p(m + 1) &= 6m + 9 \\
+p(m + 1) &= 3(2m + 3) 
+\end{align*}
+Which is divisible by 3. We can therefore conclude that $p(3n + 1)$ is true $\forall m \in \N$. Next, we can show that $p(3n)$ and $p(3n+2)$ are both false in the same manner. First, $p(3n)$. The base case is the same as above. Take $p(m) = 2(3m) + 1$. Solving for $p(m + 1)$, we find:
+\begin{align*}
+p(m) &= 6m + 1 \\
+p(m + 1) &= 6(m + 1) + 1 \\
+p(m + 1) &= 6m + 7
+\end{align*}
+Which cannot be divided by 3. Hence, $p(3n)$ is false. Now, $p(3n + 2)$. Again, the base case is identical to the one above. Take $p(m) = 2(3m + 2) + 1$. Solving for $p(m + 1)$, we find:
+\begin{align*}
+p(m) &= 6m + 5 \\
+p(m + 1) &= 6(m + 1) + 5 \\
+p(m + 1) &= (6m + 6) + 5 \\
+p(m + 1) &= 6m + 11 
+\end{align*}
+Which cannot be divided by 3. Thus, $p(3n + 2)$ is false. 
+\end{proof}
+
+\item Explain, in your own words, the Principle of Weak Induction (Thm. 1.3.10). Without writing a formal proof, discuss why the theorem is true.
+
+
+The Principle of Weak Induction states that if we can prove one base case to be correct, we can then prove another arbitrary case to be true as well, which in turn proves that the entire statement is true. This principle works due to the well ordering principle, which states that if we take the first case to be the first in the set of all true solutions, and prove it correct, then we can prove the next case correct as well. This is because the truth of the previous case implies the truth of the current case, and so on recursively for all natural numbers. 
+
+\end{enumerate}
+\end{document}
