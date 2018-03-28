@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+
+\begin{document}
+\title{21-127 Homework 8
+}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+
+Complete the following problems. Fully justify each response.
+
+NOTE: due to the Spring Break, this homework set is a bit longer than is typical. You only need to turn in those problems marked with (*).
+
+\begin{enumerate}
+
+
+\item (*) Let $X$ be a finite set, and suppose there is a surjection $f:X\to Y$. Prove that $|X|\geq |Y|$. 
+\begin{proof}
+If $f$ is surjective, then $\forall y \in Y$, $\exists x \in X$ such that $f(x) = y$. Since $f$ is a function, each $x$ contributes at most one to $y$. Let $|B| = n$. There must be at least $n$ $x$s, so $|X| \geq n = |Y|$.
+\end{proof}
+
+\item (*) Let \[X_2=\{n\ | 1\leq n\leq 200, n=k^2\ \exists k\in \Z\},\] \[X_3=\{n\ | \ 1\leq n\leq 200, n=k^3\ \exists k\in \Z\},\] and \[X_4 = \{n\ | \ 1\leq n\leq 200, n=k^4\ \exists k\in \Z\}.\] Determine $|X_2\cup X_3\cup X_4|$.
+
+\item (*) Let $X=\{ (a_1, a_2, \dots, a_n)\ | \ a_i\in\{0,1\}\forall i\} = \{0,1\}^n$. These are sometimes called bitstrings of length $n$.
+\begin{enumerate}
+\item Show that there is a bijection between $X$ and $\{f:[n]\to\{0,1\}\}$, the set of functions from $[n]$ to $\{0,1\}$
+\item Show that there is a bijection between $X$ and $\mathcal{P}([n])$.
+\item Determine $|X|$.
+\end{enumerate}
+
+\item (*) Let $X$ and $Y$ be finite sets. Define $X^Y = \{f:Y\to X\}$, the set of functions from $Y$ to $X$. Prove that $|X^Y|=|X|^{|Y|}$.
+
+\item (*) Let $n, k\in \N$ with $n\geq k$. Prove, by counting in 2 ways, that $k{n\choose k} = (n-k+1){n\choose k-1}$.
+
+\begin{proof}
+Suppose we wish to select from a group of $n$ people a committee of $k$ people with a president (so there are $k-1$ members plus one president on the committee). There are two ways to do this. First, we could select the $k$ people for the committee from the $n$ total people, and then select the president from the committee of $k$ people so we have ${k \choose 1}{n\choose k} = k{n\choose k}$.
+
+On the other hand, we could first select the committee with $k - 1$ members from the $n$ total people. We then choose the president from the remaining group of people, which is now $n - k + 1$ in size. Using this selection technique we get ${n-k+1 \choose 1}{n\choose k-1} = (n-k+1){n\choose k-1}$. 
+
+Thus, since both sides of the equality count the same set, they are equal. 
+\end{proof}
+
+\item (*) How many subsets of $[20]$ contain a multiple of 4? Prove that your answer is correct.
+
+\begin{proof}
+There are $2^{20}$ possible subsets of $\{1, 2, 3, \ldots 20\}$. There are $2^5$ possible subsets of $\{4, 8, 12, 16, 20\}$. Thus, there are $2^5 = 32$ subsets of $[20]$ that contain a multiple of 4.  
+\end{proof}
+
+\item (*) Let $f:X\to Y$ be a bijection. Prove that $X$ is countably infinite if and only if $Y$ is countably infinite.
+
+\item (*) Let $X$ be a finite set. Show that $\N^X=\{f:X\to \N\}$ is countably infinite.
+
+\end{enumerate}
+
+\end{document}
