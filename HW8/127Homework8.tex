@@ -137,7 +137,11 @@ Assume $Y$ is countably infinite. So there exists $f^{-1}: Y \to X$. Since $Y$ i
 \item (*) Let $X$ be a finite set. Show that $\N^X=\{f:X\to \N\}$ is countably infinite.
 
 \begin{proof}
+We proceed by induction on $X$. 
 
+Base Case: $|X| = 1$. $X$ can be mapped to any value in $\N$ by specifying some function $f$, where $f(x) = a$, $a \in \N$. Since there are a countably infinite number of possible values to set $a$ to, there are countably infinite possible functions $f$ mapping $x$ to $a$. There are therefore $|X|^1$ possiblities, which is countably infinite. 
+
+Inductive Hypothesis: $\N^X=\{f:X\to \N\}$, $\N^X$ is countably infinite. We will show that $\N^{X + 1}$ is countably infinite for $N^{X + 1} = f:\{A \to \N\}$, where $A$ is a set with the cardinality $|X| + 1$. For $\N^{X + 1}$ to be countably infinite, there must be some $g:\N^{X + 1} \to \N$, and $g$ is bijective. $|\N^{X + 1}|$ can be found by $\N^X \times \N$, since there are $\N^X$ different functions that map $X$ to $\N$. Now we must show that $\N^X \times \N$ forms a bijection with $\N$. We know $\N^X$ is countably infinite by IH and $\N$ is countably infinite as well. The cartesian product of two countably infinite sets is known to be countably infinite as well (proved in book), so we know $\N^X \times \N$ is countably infinite, so we conclude that $\N^{X + 1}$ is countably infinite.  
 \end{proof}
 
 \end{enumerate}
