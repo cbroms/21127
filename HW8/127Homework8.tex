@@ -60,19 +60,54 @@ NOTE: due to the Spring Break, this homework set is a bit longer than is typical
 
 \item (*) Let $X$ be a finite set, and suppose there is a surjection $f:X\to Y$. Prove that $|X|\geq |Y|$. 
 \begin{proof}
-If $f$ is surjective, then $\forall y \in Y$, $\exists x \in X$ such that $f(x) = y$. Since $f$ is a function, each $x$ contributes at most one to $y$. Let $|B| = n$. There must be at least $n$ $x$s, so $|X| \geq n = |Y|$.
+
+Assume by contradiction, that $|X| < |Y|$. 
+If $f$ is surjective, then $\forall y \in Y$, $\exists x \in X$ such that $f(x) = y$. Because every $y \in Y$ must be mapped to an $x \in X$, and $|X| < |Y|$, there will not be enough elements in $X$ to map to every $y$, and we have arrived at a contradiction. Since $f$ is a function and surjective, each $y$ must have an $x \in X$, so it follows that $|X|\geq |Y|$.
 \end{proof}
 
 \item (*) Let \[X_2=\{n\ | 1\leq n\leq 200, n=k^2\ \exists k\in \Z\},\] \[X_3=\{n\ | \ 1\leq n\leq 200, n=k^3\ \exists k\in \Z\},\] and \[X_4 = \{n\ | \ 1\leq n\leq 200, n=k^4\ \exists k\in \Z\}.\] Determine $|X_2\cup X_3\cup X_4|$.
 
+The set of $X_2$ is defined as $\{1, 4, 9, 16, 25, 36 \dots 196\}$, so it has the squares of $k = 1$ through $k = 14$. Thus $|X_2| = 14$. The set $X_3$ is defined as $\{1, 8, 27, 64, 125\}$, with $k = 1$ through $k = 5$. So $|X_3| = 5$. Finally, the set $X_4$ is defined as $\{1, 16, 81\}$. So it has values for $k = 1$ through $k = 3$, and $|X_4| = 3$. 
+
+To calculate $|X_2\cup X_3\cup X_4|$, we use the inclusion-exclusion rule to get $|X_2\cup X_3\cup X_4| = |X_2| + |X_3| + |X_4| - |X_2 \cap X_3| - |X_2 \cap X_4| - |X_3 \cap X_4| + |X_2 \cap X_3 \cap X_4|$.  Now, we can simply insert the cardinalities. So, $14 + 5 + 3 - 2 - 3 - 1 + 1 = 17$. Thus, $|X_2\cup X_3\cup X_4| = 14$. 
+
+
 \item (*) Let $X=\{ (a_1, a_2, \dots, a_n)\ | \ a_i\in\{0,1\}\forall i\} = \{0,1\}^n$. These are sometimes called bitstrings of length $n$.
 \begin{enumerate}
 \item Show that there is a bijection between $X$ and $\{f:[n]\to\{0,1\}\}$, the set of functions from $[n]$ to $\{0,1\}$
+
+\begin{proof}
+The function works by taking a bitstring of length $n$ and mapping each index to 0 or 1. So the bitstring can be written as $(a_1, a_2 \dots a_i)$, where each $a_i$ is mapped to $\{0, 1\}$ by $f(a_i)$. Let $Y = \{f:[n]\to\{0,1\}\}$ and $g:X \to Y$, where $g(x) = f([n])$, and $x=\{0, 1\}^n$. We can show that this function is injective. Let $g(a) = g(b)$ for some $a, b \in \Z$. Then $\{0, 1\}^a =  \{0, 1\}^b$, and $a = b$. Thus $g$ is injective. 
+
+Now, we will show $g$ is surjective. For all $f([n])$ there exists some $\{0, 1\}^n$. Thus, for all $f([n])$
+there exists some $x \in X$. 
+
+Since $g$ is injective and surjective, it must be bijective. Thus, there is a bijection between $X$ and $\{f:[n]\to\{0,1\}\}$.
+\end{proof}
+
 \item Show that there is a bijection between $X$ and $\mathcal{P}([n])$.
+
+\begin{proof}
+Let $Y = \{f:[n]\to\{0,1\}\}$ and define $g:Y \to \mathcal{P}([n])$ and $g(f) = \{n \in [n]\ |\ f(n) = 1\}$.
+
+Thus, to show $g$ is injective, we set $g(f_1) = g(f_2)$ for some $f_1, f_2$. Then $f_1(n) = 1$ when $f_2(n) = 1$ and $f_1(n) = 0$ when $f_2(n) = 0$. Thus, $f_1 = f_2$ and $g$ is injective. 
+
+Show $g$ surjective. Let $A \in \mathcal{P}([n])$. For some $f$, $g(f)$ maps every element in $A$ to 1 or 0. So $g$ is surjective. 
+
+Thus, there exists a bijection between $X$ and $\mathcal{P}([n])$.
+\end{proof}
+
+
 \item Determine $|X|$.
+
+There are 2 options for each of the $n$ elements of $X$, so $|X| = 2^n$
 \end{enumerate}
 
 \item (*) Let $X$ and $Y$ be finite sets. Define $X^Y = \{f:Y\to X\}$, the set of functions from $Y$ to $X$. Prove that $|X^Y|=|X|^{|Y|}$.
+
+\begin{proof}
+Since $X, Y$ are finite sets, let $|X| = n$, $|Y| = m$ for some $n, m \in \N$. So clearly, $|X|^{|Y|} = n^m$. Then $X = \{x_1, x_2 \dots x_n\}$ and $Y = \{y_1, y_2 \dots y_m\}$. We need to map each $x \in X$ with some $y \in Y$. Each of the elements in $X$ can be mapped to $Y$ in $m$ different ways. Because there are $n$ elements in X, $|X^Y| = n^m$
+\end{proof}
 
 \item (*) Let $n, k\in \N$ with $n\geq k$. Prove, by counting in 2 ways, that $k{n\choose k} = (n-k+1){n\choose k-1}$.
 
@@ -87,12 +122,23 @@ Thus, since both sides of the equality count the same set, they are equal.
 \item (*) How many subsets of $[20]$ contain a multiple of 4? Prove that your answer is correct.
 
 \begin{proof}
-There are $2^{20}$ possible subsets of $\{1, 2, 3, \ldots 20\}$. There are $2^5$ possible subsets of $\{4, 8, 12, 16, 20\}$. Thus, there are $2^5 = 32$ subsets of $[20]$ that contain a multiple of 4.  
+We have previously proven that $ | \mathcal{P}([n]) | = 2^n$. We can use this to attain the fact that $| \mathcal{P}([20]) | = 2^{20}$, so there are $2^{20}$ possible subsets of $\{1, 2, 3, \ldots 20\}$. We write the set of possible multiples of 4 as $\{4, 8, 12, 16, 20\}  = A$. There are $2^5$ possible subsets of A. We can also subtract the number of non-multiples of 4 from the set of $[20]$, so $2^{20} - 2^{15} = 2^5 = 32$.
+%Define $X_k = \{A \subseteq [12]\ |\ k \in A\}$. We wish to know $|X_4 \cup X_8 \cup X_{12} \cup X_{16} \cup X_{20}|$. Note that each $X_k$ is th powerset of $[20]$ minus the $k$ element. So for example  $ |X_4 | = \mathcal{P}([20] / \{4\}) $. So we can calculate $|X_4 \cup X_8 \cup X_{12} \cup X_{16} \cup X_{20}|$ as $\sum\limits_{i = 1}^{5}X_{4i} - \sum\limits_{i \neq j, i,j \in A}^{}|X_i \cap X_j| + \sum\limits_{i \neq j \neq k, i,j, k \in A}^{}|X_i \cap X_j \cap X_k| + \sum\limits_{i \neq j \neq k \neq \ell, i,j, k, \ell \in A}^{}|X_i \cap X_j \cap X_k \cap X_\ell|- |X_4 \cap X_8 \cap X_{12} \cap X_{16} \cap X_{20}|$. 
 \end{proof}
 
 \item (*) Let $f:X\to Y$ be a bijection. Prove that $X$ is countably infinite if and only if $Y$ is countably infinite.
 
+\begin{proof}
+Assume $X$ is countably infinite. So there exists a bijection $g:\N \to X$. We can therefore create a composition $g \circ f:\N \to Y$. Since there exists a bijection from the naturals to $Y$, we conclude $Y$ is countably infinite.
+
+Assume $Y$ is countably infinite. So there exists $f^{-1}: Y \to X$. Since $Y$ is countably infinite, there is a function $g:\N \to Y$. So if we take $f^-1 \circ g: \N \to X$, there is clearly a bijection between the natural numbers and $X$, so it is countably infinite.  
+\end{proof}
+
 \item (*) Let $X$ be a finite set. Show that $\N^X=\{f:X\to \N\}$ is countably infinite.
+
+\begin{proof}
+
+\end{proof}
 
 \end{enumerate}
 
