@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+\begin{document}
+\title{21-127 Homework 8
+}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+Complete the following problems. Fully justify each response.
+
+
+\begin{enumerate}
+
+\item A number is called {\it algebraic} if it is the root of a polynomial $p(x)=a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0$, where each $a_i\in \Z$. Let $\mathcal{A}$ denote the set of algebraic numbers.
+\begin{enumerate}
+\item Prove that $\Q\subseteq\mathcal{A}$.
+
+\begin{proof}
+Let $q \in \Q$ such that $q = \frac{a}{b}$ for some $a, b \in \Z$. So our polynomial $p(x) = a_1x - a_0$ can be written as $p(x) = bx - a$. Notice, $p(q) = p(\frac{a}{b}) = b \cdot \frac{a}{b} - a = 0$ and thus $q$ is a root of $p(x)$. Thus $q \in \mathcal{A}$. Therefore, $\Q\subseteq\mathcal{A}$. 
+\end{proof}
+\item Prove that the set of all algebraic numbers is countably infinite.
+
+(Hint: First consider the possible roots of polynomials of degree $k$. Then use a union argument).
+
+\begin{proof}
+Consider the set of polynomials of degree $n$ as $P_n$. We can show that this set of polynomials is countable by constructing a bijection between $P_n$ and $\Z^{n + 1}$, so let $f:P_n \to \Z^{n + 1}$, where $f(a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0) = (a_0, a_1 \dots a_{n-1}, a_n)$. The codomain can be expressed as an expansion of the integers, where there are $\Z \times \Z^n$ instances. We know that $\Z$ is countably infinite, and the cartesian product of countably infinite sets yields a countably infinite set, so we conclude that $P_n$ is countably infinite. 
+
+Now, we know that a polynomial of degree $n$ has a maximum of $n$ roots. So, we need to prove that the set $R$ of roots for any given polynomial is countably infinite. This can be easily derived from the fact that the set of polynomials of degree $n$ is countably infinite. So, we can construct the set $\mathcal{A}$ of algebraic numbers as a union of the sets of roots for given polynomials $p$. Thus, $\mathcal{A} = \bigcup\limits_{p \in P}^{} R_p$. Since this is a union of countably infinite sets, we can conclude that $\mathcal{A}$ is countably infinite. 
+\end{proof}
+
+\end{enumerate}
+
+\item \begin{enumerate}
+\item Let $X$ be any set. Prove, using Cantor's Diagonalization Argument, that $|\mathcal{P}(X)|>|X|$.
+
+\begin{proof}
+We want to show that for every function $f:X \to \mathcal{P}(X)$ there is a subset $A \subseteq X$ such that $A \notin \mathcal{P}(X)$, which shows that there is no bijection or surjection from $X$ to $\mathcal{P}(X)$, and thus $|\mathcal{P}(X)|>|X|$. 
+
+Assume that we have some function $f:X \to \mathcal{P}(X)$. Let the set $B = f(x)$. There are two possibilites: for each $x \in X$, either $x \in B$ or $x \notin B$. We build a subset from $X$, called $A$ by selecting values from $X$ such that $A = \{x \in X\ |\ x \notin B\}$.
+
+Notice that for each $x \in X$, $x\in B$ and $x \notin A$, OR $x\in A$ and $x \notin B$. We therefore have two distinct sets, $A$ and $B$. Hence, it must be that $A \neq B$ since the two sets don't share any elements. We now know that there are elements in $X$, namely the set $A$, that do not map to any value in the codomain. Thus, we know that $A \notin \mathcal{P}(X)$, and can conclude that there is no surjection from $X$ to $\mathcal{P}(X)$. Therefore, $|\mathcal{P}(X)|>|X|$. 
+\end{proof}
+
+\item Prove that $\mathcal{P}(X)$ is either finite or uncountably infinite.
+\begin{proof}
+We can consider three distinct cases based off of the size of $X$. 
+
+Case 1: $X$ is finite. Let $|X| = n$ for some $n \in \N$. We know that $|\mathcal{P}(X)| = 2^n$. Therefore, $\mathcal{P}(X)$ is countably infinite because $n$ is some finite number and $2^n$ is also some finite number, and there exists a bijection from $2^n$ to $\mathcal{P}(X)$. 
+
+Case 2: $X$ is countably infinite. Suppose that $|\mathcal{P}(X)| = |X|$. Then there exists some bijection, $g$ from $X$ to $\mathcal{P}(X)$, so $g:X \to \mathcal{P}(X)$. We will construct a set $T \in \mathcal{P}(X)$ such that there is no $t \in X$ with $g(t) = T$. Let $T = \{t \in X\ |\ t \notin g(t)\}$. Notice that $T \in \mathcal{P}(X)$ but there is no $x \in X$ such that $g(x) = T$. Therefore, there cannot be a bijection from $X$ to $\mathcal{P}(X)$. Thus, $\mathcal{P}(X)$ is not countably infinite. Since $|\mathcal{P}(X)| > |X|$ and $X$ is countably infinite, then $\mathcal{P}(X)$ is uncountably infinite because it is greater than a countably infinite set. 
+
+Case 3: $X$ is uncountably infinite. Therefore, $\mathcal{P}(X)$ is uncountably infinite because it's size is greater than $X$, and uncountably infinite set because $|\mathcal{P}(X)| > |X|$. 
+
+Therefore, we conclude that $\mathcal{P}(X)$ can be either finite or uncountably infinite. 
+\end{proof}
+\end{enumerate}
+
+\item Let $f:X\to Y$ be a function. Define a relation $R$ on $X$ by $x_1 R x_2 \Leftrightarrow f(x_1)=f(x_2)$. Is this an equivalence relation? If so, prove it. If not, explain why not.
+
+\begin{proof}
+Yes, this is an equivalence relation. 
+
+Reflexivity: We know $xRx$ since $f(x) = f(x)$. 
+
+Symmetry: Suppose $x_1 R x_2$. Then $f(x_1) = f(x_2)$ and $f(x_2) = f(x_1)$. Thus $x_2 R x_1$.
+
+Transitivity: Suppose $x_1 R x_2$ and $x_2 R x_3$. Then $f(x_1) = f(x_2)$ and $f(x_2) = f(x_3)$. Therefore, $f(x_1) = f(x_2) = f(x_3)$ so $f(x_1) = f(x_3)$. Hence $x_1 R x_3$. 
+\end{proof}
+
+\end{enumerate}
+\end{document}
