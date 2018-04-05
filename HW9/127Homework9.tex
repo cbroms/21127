@@ -88,7 +88,7 @@ Notice that for each $x \in X$, $x\in B$ and $x \notin A$, OR $x\in A$ and $x \n
 \begin{proof}
 We can consider three distinct cases based off of the size of $X$. 
 
-Case 1: $X$ is finite. Let $|X| = n$ for some $n \in \N$. We know that $|\mathcal{P}(X)| = 2^n$. Therefore, $\mathcal{P}(X)$ is countably infinite because $n$ is some finite number and $2^n$ is also some finite number, and there exists a bijection from $2^n$ to $\mathcal{P}(X)$. 
+Case 1: $X$ is finite. Let $|X| = n$ for some $n \in \N$. We know that $|\mathcal{P}(X)| = 2^n$. Therefore, $\mathcal{P}(X)$ is countably infinite because $n$ is some finite number and $2^n$ is also some finite number, and there exists a bijection from $2^n$ to $\mathcal{P}(X)$, and thus the power set is finite. 
 
 Case 2: $X$ is countably infinite. Suppose that $|\mathcal{P}(X)| = |X|$. Then there exists some bijection, $g$ from $X$ to $\mathcal{P}(X)$, so $g:X \to \mathcal{P}(X)$. We will construct a set $T \in \mathcal{P}(X)$ such that there is no $t \in X$ with $g(t) = T$. Let $T = \{t \in X\ |\ t \notin g(t)\}$. Notice that $T \in \mathcal{P}(X)$ but there is no $x \in X$ such that $g(x) = T$. Therefore, there cannot be a bijection from $X$ to $\mathcal{P}(X)$. Thus, $\mathcal{P}(X)$ is not countably infinite. Since $|\mathcal{P}(X)| > |X|$ and $X$ is countably infinite, then $\mathcal{P}(X)$ is uncountably infinite because it is greater than a countably infinite set. 
 
