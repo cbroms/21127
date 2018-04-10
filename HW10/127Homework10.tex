@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+\begin{document}
+\title{21-127 Homework 10
+}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+Complete the following problems. Fully justify each response.
+
+
+\begin{enumerate}
+
+\item Let $X$ be a set, and let $\sim_1$ and $\sim_2$ be two equivalence relations on $X$. Define a relation $\sim$ by $x\sim y$ if and only if $x\sim_1 y \wedge x\sim_2 y$. Prove that this is an equivalence relation. Describe the equivalence classes $[x]_\sim$ in terms of $[x]_{\sim_1}$ and $[x]_{\sim_2}$.
+
+\item Let $P$ be a poset with element set $\N$, and order $\preceq$, where $a\preceq b$ if and only if $a|b$. Formally prove that this is a poset.
+
+\item Let $P$ be a poset with partial order $\leq$. We define an element $m$ of $P$ to be {\it minimal} if there does not exist any $x\in P$ with $x<m$.
+\begin{enumerate}
+\item How is a minimal element different from a minimum element (as defined in class)?
+\item Give an example of a poset that has at least one minimal element, but no minimum element.
+\item Prove that if a poset has a minimum element, then it has only one minimal element.
+\end{enumerate}
+(Note: This entire problem could be repeated verbatim for a maximal element as well)
+
+\item Let $X$ be a set, and let $P$ be the poset whose elements are $\mathcal{P}(X)$, and $A\leq B$ if and only if $A\subseteq B$.
+
+Let $\{A_1, A_2, \dots, A_n\}$ be elements of $P$. Prove that $\displaystyle \bigwedge_{i=1}^n A_i = \displaystyle\bigcap_{i=1}^n A_i$, and $\displaystyle \bigvee_{i=1}^n A_i = \displaystyle\bigcup_{i=1}^n A_i$.
+
+\item Let $(X, \preceq)$ be a lattice, and let $x, y\in X$. Prove the following:
+\begin{enumerate}
+\item $x\vee y = y \vee x$
+\item $x\wedge y = y\wedge x$
+\item $x\vee (x\wedge y)=x$
+\item $x\wedge(x\vee y)=x$
+\end{enumerate}
+
+\item Give an example of a lattice that is not distributive.
+
+\end{enumerate}
+\end{document}
