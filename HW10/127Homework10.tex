@@ -108,6 +108,16 @@ Without loss of generality, assume that a poset $P$ has two minimal elements, $a
 
 Let $\{A_1, A_2, \dots, A_n\}$ be elements of $P$. Prove that $\displaystyle \bigwedge_{i=1}^n A_i = \displaystyle\bigcap_{i=1}^n A_i$, and $\displaystyle \bigvee_{i=1}^n A_i = \displaystyle\bigcup_{i=1}^n A_i$.
 
+\begin{proof}
+First, we will show that $\displaystyle \bigvee_{i=1}^n A_i = \displaystyle\bigcup_{i=1}^n A_i$ with induction on $n$. 
+
+Base Case: $n = 1$. We have $\displaystyle \bigvee_{i=1}^1 A_i = \displaystyle \bigvee_{i=1}^1 A_1$. This is $A_1$ since $A_1 \subseteq A_1$. Additionally, note that $ \displaystyle\bigcup_{i=1}^1 A_i = A_1$, so $\displaystyle \bigvee_{i=1}^1 A_i = \displaystyle\bigcup_{i=1}^1 A_i$. 
+
+Induction Step: Assume $\displaystyle \bigvee_{i=1}^{n} A_i = \displaystyle\bigcup_{i=1}^n A_i$. We want to show that $\displaystyle \bigvee_{i=1}^{n+1} A_i = \displaystyle\bigcup_{i=1}^{n+1} A_i$. We can rewrite $\displaystyle \bigvee_{i=1}^{n+1} A_i$ as $\displaystyle \bigvee_{i=1}^{n} A_i  \vee A_{n+1}$. We know that from the base case, $ \vee A_1 =  \cup A_1$. This applies to all single elements, so $ \vee A_{n+1} =  \cup A_{n+1}$, and $\displaystyle \bigvee_{i=1}^{n} A_i  \cup A_{n+1}$. Using the induction hypothesis, we can replace $\displaystyle \bigvee_{i=1}^{n} A_i$ to get $\displaystyle \bigcup_{i=1}^{n} A_i  \cup A_{n+1}$, so we have $\displaystyle \bigcup_{i =1}^{n+1} A_i = \displaystyle \bigvee_{i =1}^{n+1} A_i$. 
+
+We can therefore conclude that $\displaystyle \bigvee_{i=1}^n A_i = \displaystyle\bigcup_{i=1}^n A_i$. The entire argument can be re-written with $\cap$ and $\wedge$, using the same logic above, so we have $\displaystyle \bigwedge_{i=1}^n A_i = \displaystyle\bigcap_{i=1}^n A_i$. 
+\end{proof}
+
 \item Let $(X, \preceq)$ be a lattice, and let $x, y\in X$. Prove the following:
 \begin{enumerate}
 \item $x\vee y = y \vee x$
@@ -160,7 +170,7 @@ Thus, we conclude $L_1 = L_2$, and $x\wedge(x\vee y)=x$.
 
 \item Give an example of a lattice that is not distributive.
 
-Consider the lattice defined by $X = \{a, b, c, d, e\}$, $(X, \leq)$, where $\leq\ = \{(d,a),(d, b), (d, c), (a, e), (b, e), (c, e)\}$. Notice that the distributive lattice property of distributivity does not hold: $(a \wedge b) \vee (b \wedge c) = d \vee d = d$. On the other hand, $a \wedge (b \vee c) = a \wedge e = a$. The distributive property does not hold, as $a \neq d$. 
+Consider the lattice defined by $X = \{a, b, c, d, e\}$, $(X, \leq)$, where $\leq\ = \{(d,a),(d, b), (d, c), (a, e), (b, e), (c, e)\}$. (this is the diamond shaped lattice in a hasse diagram) Notice that the distributive lattice property of distributivity does not hold: $(a \wedge b) \vee (b \wedge c) = d \vee d = d$. On the other hand, $a \wedge (b \vee c) = a \wedge e = a$. The distributive property does not hold, as $a \neq d$. 
 
 
 \end{enumerate}
