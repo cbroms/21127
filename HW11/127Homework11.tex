@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+\begin{document}
+\title{21-127 Homework 11
+}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+Complete the following problems. Fully justify each response.
+
+
+\begin{enumerate}
+
+\item Let $(X, 0, 1, +, \cdot)$ be a field, where $X$ is a finite set. Prove that there is no ordering $\leq$ on $X$ under which $X$ is an ordered field.
+
+\item Let $(X, 0, 1, +, \cdot, \leq)$ be an ordered field. Prove each of the following basic ordered field properties, from axioms.
+\begin{enumerate}
+\item For all $x\in X$, $x^2>0$.
+\item For all $w, x, y, z\in X$, if $w\leq x$ and $y\leq z$, then $w+y\leq x+z$.
+\item For all $x, y, z\in X$, if $x\geq 0$ and $y\leq z$, then $xy\leq xz$.
+\item For all $x, y, z\in X$, if $x\leq 0$ and $y\leq z$, then $xy\geq xz$.
+\end{enumerate}
+
+\item Let $\vec{x}, \vec{y}, \vec{z}\in \R^n$. Prove that $\|\vec{x}-\vec{z}\|\leq \|\vec{x}-\vec{y}\|+\|\vec{y}-\vec{z}\|$.
+
+\item Let $x_n = \frac{n+2}{n+1}$. Prove that $x_n$ converges to $1$.
+
+\begin{proof}
+Let $\epsilon > 0$ and let $N \in \N$ with $N > \frac{1}{\epsilon} - 1$. Let $n \geq N$. Then $|\frac{n+2}{n+1} - 1| = \frac{1}{n+1} < \frac{1}{N + 1} < \frac{1}{\frac{1}{\epsilon} - 1 + 1} = \epsilon$. Therefore, by definition, $(\frac{n+2}{n+1}) \to 1$.
+\end{proof}
+
+\item Let $(x_n)$ and $(y_n)$ be sequences of real numbers, with $(x_n)\to a$ and $(y_n)\to b$. Let $z_n=x_ny_n$ for all $n\in \N$. Prove that $(z_n)\to ab$.
+
+\item Prove that if $(x_n)$ is a monotonically decreasing sequence, having a lower bound, then $(x_n)$ converges.
+
+
+\end{enumerate}
+\end{document}
