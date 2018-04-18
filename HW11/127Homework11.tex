@@ -66,6 +66,11 @@ Complete the following problems. Fully justify each response.
 
 \item Let $\vec{x}, \vec{y}, \vec{z}\in \R^n$. Prove that $\|\vec{x}-\vec{z}\|\leq \|\vec{x}-\vec{y}\|+\|\vec{y}-\vec{z}\|$.
 
+\begin{proof}
+Recall the triangle inequality: $\|a + b\| = \|a\| + \|b\|$. Let $a = \vec{x} - \vec{y}$ and let $b= \vec{y} - \vec{z}$. Then we have $$\|\vec{x}-\vec{y} + \vec{y} - \vec{z}\|\leq \|\vec{x}-\vec{y}\|+\|\vec{y}-\vec{z}\|$$ $$\|\vec{x}-\vec{z}\|\leq \|\vec{x}-\vec{y}\|+\|\vec{y}-\vec{z}\|$$ and we are done.  
+
+\end{proof}
+
 \item Let $x_n = \frac{n+2}{n+1}$. Prove that $x_n$ converges to $1$.
 
 \begin{proof}
@@ -73,6 +78,25 @@ Let $\epsilon > 0$ and let $N \in \N$ with $N > \frac{1}{\epsilon} - 1$. Let $n 
 \end{proof}
 
 \item Let $(x_n)$ and $(y_n)$ be sequences of real numbers, with $(x_n)\to a$ and $(y_n)\to b$. Let $z_n=x_ny_n$ for all $n\in \N$. Prove that $(z_n)\to ab$.
+
+\begin{proof}
+Let $\epsilon > 0$. Since every convergent sequence of real numbers must be bounded, there exists some $M > 0$, $N_1 \in \N$, where 
+$$\forall n \geq N_1, |x_n| < M$$
+In addition, since $(x_n)$ and $(y_n)$ both converge, then there exists $N_2, N_3 \in \N$ such that 
+$$\forall n \geq N_2, |x_n - a| < \frac{\epsilon}{2|b|}$$
+$$\forall n \geq N_3, |y_n - b| < \frac{\epsilon}{2M}$$
+
+So $\forall n \geq N$, $N = \max\{N_1, N_2, N_3\}$.
+
+Now, $$|(x_n - y_n) - ab| = |x_ny_n - x_nb + x_nb - ab|$$
+$$\leq |x_ny_n -x_nb| + |x_nb-ab|$$
+$$\leq |x_n(y_n-b)| + |b(x_n-a)|$$
+Substituting, we have
+$$M \cdot \frac{\epsilon}{|2M|} + |b| \cdot \frac{\epsilon}{|2b|} = \frac{\epsilon}{2} +\frac{\epsilon}{2} = \epsilon$$
+
+Hence, $\forall \epsilon > 0$, $\exists N \in \N$ such that if $n \geq N$, $|x_ny_n - ab| < \epsilon$.
+Thus, we conclude $x_ny_n\to ab$.
+\end{proof}
 
 \item Prove that if $(x_n)$ is a monotonically decreasing sequence, having a lower bound, then $(x_n)$ converges.
 
