@@ -56,12 +56,54 @@ Complete the following problems. Fully justify each response.
 
 \item Let $(X, 0, 1, +, \cdot)$ be a field, where $X$ is a finite set. Prove that there is no ordering $\leq$ on $X$ under which $X$ is an ordered field.
 
+\begin{proof}
+If $X$ is finite, then $|X| = b$. We know that $0 \leq 1$, and by axiom F1 that $0\neq1 \Rightarrow 0<1$. By extension, it holds that $a < a+1$ by OF2 for some $a \in X$. However, since $X$ is finite, that means that there exists one element that cannot be compared with anything; the maximum of $X$. Consider the field ordering 
+$$0 < 1 < 1+1 < 1+1+1< 1+1+1+\ldots$$
+Since $X$ is finite, the final element in the ordering is the maximum. Let this max value be $b$. Thus, $b < b+1$, but notice that $b+1 \notin X$ since the set is finite. So to be ordered, it must hold that $b \leq a$ for some $a \in X$. But we have shown that $b\neq a$ by F1. And $b \not< a$ because by definition $b$ is the maximum value in $X$. Thus, $X$ cannot be an ordered field since $b + 1\notin X$ and $b$ cannot be compared to any element. 
+\end{proof}
+
 \item Let $(X, 0, 1, +, \cdot, \leq)$ be an ordered field. Prove each of the following basic ordered field properties, from axioms.
 \begin{enumerate}
 \item For all $x\in X$, $x^2>0$.
+\begin{proof}
+There are two cases, $x>0$ or $x<0$. 
+
+Case 1: $x>0$. So,
+$$x >0$$
+$$x \cdot x > x \cdot 0$$
+$$x^2 > 0$$
+
+Case 2: $x < 0$. So, 
+$$-x > 0$$ 
+$$-x \cdot -x > 0 \cdot -x$$ 
+$$x^2 > 0$$ 
+and we are done. 
+\end{proof}
 \item For all $w, x, y, z\in X$, if $w\leq x$ and $y\leq z$, then $w+y\leq x+z$.
+\begin{proof}
+If $w\leq x$ and $y\leq z$, then we have $z-y \geq 0$ and $x-w \geq 0$. Rearranging, we get $w-x \leq 0$ and $z - y \geq 0$. Thus, it follows that 
+$$z-y \geq w-x$$
+$$z \geq w - x + y$$
+$$z + x \geq w+y$$
+Thus, $w+y\leq x+z$.
+and we are done. 
+\end{proof}
 \item For all $x, y, z\in X$, if $x\geq 0$ and $y\leq z$, then $xy\leq xz$.
+\begin{proof}
+Since $x \geq 0$ and $y \leq z$ then $y-z \leq 0$. So, 
+$$x \cdot (y-z) \leq 0 $$
+$$xy - xz \leq 0 $$
+$$xy \leq xz $$
+and we are done. 
+\end{proof}
 \item For all $x, y, z\in X$, if $x\leq 0$ and $y\leq z$, then $xy\geq xz$.
+\begin{proof}
+Since $x\leq 0$ and $y\leq z$, then $y-z \leq 0$. Then since $x\leq 0$, we have two negative numbers and thus
+$$x \cdot (y-z) \geq 0 \cdot x$$
+$$xy- xz \geq 0$$
+$$xy \geq xz$$
+ and we are done. 
+\end{proof}
 \end{enumerate}
 
 \item Let $\vec{x}, \vec{y}, \vec{z}\in \R^n$. Prove that $\|\vec{x}-\vec{z}\|\leq \|\vec{x}-\vec{y}\|+\|\vec{y}-\vec{z}\|$.
@@ -100,6 +142,22 @@ Thus, we conclude $x_ny_n\to ab$.
 
 \item Prove that if $(x_n)$ is a monotonically decreasing sequence, having a lower bound, then $(x_n)$ converges.
 
+\begin{proof}
+First, we must show that $x_n$ has a greatest lower bound; that it has an infimum. 
+
+Consider the set bounded between two values, given by $X = \{x\in \R\ |\ m < x < n\}$, where $m, n \in \R$. So, we have that $m \leq x\ \forall x \in X$. Hence, $m$ is by defintion a lower bound. Now we show that for some $b$, if $m < b$ then $\exists a \in X$ so $a < b$, to prove $m$ is the greatest lower bound. There are two cases, either $m < b < n$ or $n \leq b$. In both cases, we need to choose values $a \in X$ such that $a <b$. 
+
+In the first case, we set $a = \frac{b+m}{2}$. In the second case, set $a = \frac{n+m}{2}$. 
+Notice, in both cases, $a <b$ holds, so the properties of infimum are fufilled. Therefore, we conclude that the infimum of $X$ is $m$. 
+
+Now, we know that any arbitrary bounded set has an greatest lower bound. 
+
+Next, we show that $x_n$ converges.
+
+Since $\R$ is complete, $\{x_n\ |\ n \in \N\}$ has a greatest lower bound, say $a$. Fix $\epsilon > 0$. Note that by defintion, $a + \epsilon$ is not a lower bound for $x_n$ since $a$ is the greatest lower bound. Thus, there must be some $x_n$ having $x_N < a + \epsilon$. For any $n \geq N$, we therefore have
+$$a - \epsilon < a \leq x_n \leq x_N < a + \epsilon$$
+Thus, $a-\epsilon < x_n < a + \epsilon$, so $|x_n - a| < \epsilon$, so $(x_n) \to a$. Therefore, we conclude that the monotonically decreasing bounded sequence $x_n$ converges. 
+\end{proof}
 
 \end{enumerate}
 \end{document}
