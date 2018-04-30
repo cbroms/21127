@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}[1]{\P\left(#1\right)}
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+\begin{document}
+\title{21-127 Homework 11
+}
+\author{Christian Broms \\ Section J}
+\date{\today}
+\maketitle
+Complete the following problems. Fully justify each response.
+
+
+\begin{enumerate}
+
+\item Let $(\Omega, \P)$ be a probability space. Prove that for all $A\subseteq \Omega$, $\p{\Omega\ba A} = 1-\p{A}$.
+
+\item Let $(\Omega, \P)$ be a probability space, and let $A, B\subseteq \Omega$. Prove the following:
+\begin{enumerate}
+\item For all $\omega\in\Omega$, $i_{A\cup B}(\omega) = i_{A}(\omega)+i_{B}(\omega)-i_{A}(\omega)i_{B}(\omega)$
+\item For all $\omega\in\Omega$, $i_{A^c}(\omega) = 1-i_A(\omega)$.
+\item For all $\omega\in\Omega$, $i_{A\ba B}(\omega) = i_A(\omega)(1-i_B(\omega))$
+\end{enumerate}
+
+\item You play the following game with a friend: You flip a fair coin 5 times. If it comes up heads, your friend gives you a dollar, and if it comes up tails, you give your friend a dollar. What is the probability that you end the game with more money than you started with?
+
+\item You have a drawer containing 6 socks, 3 black and 3 white. Every day for 3 days, you take 2 socks at random out of the drawer.
+\begin{enumerate}
+\item  What is the probability that you choose $k$ matching pairs of socks, for any choice of $k$ between 0 and 3?
+\item What is the expected number of matching pairs of socks you pick?
+\end{enumerate}
+
+\item You get a job after college as a public pollster. Each week, you select 1000 people from the country at random and ask them if they approve or disapprove of the job the president is doing. You then report the average approval in a news article.
+\begin{enumerate}
+\item Explain how the average approval you report can be seen as a random variable.
+\item What distribution does your random variable follow? Why? What do the parameters represent?
+\item Without calculating, discuss (mathematically!) how you could consider the question of accuracy in your poll.
+\end{enumerate}
+
+\item Use the fact that 
+\[\sum_{n\in\N} nx^{n-1} = \frac{1}{(1-x)^2}\]
+to calculate the expected value a geometrically distributed random variable.
+
+\item Suppose you have a box containing 3 coins. Two of these coins are normal, but one is a trick coin that has both sides as heads. You pick a coin and flip it twice.
+\begin{enumerate}
+\item What is the probability that you get heads twice?
+\item Suppose the coin shows heads twice. What is the probability that it is the trick coin?
+\end{enumerate}
+
+\item Let $(\Omega, \P)$ be a probability space, and let $U_1, U_2, \dots, U_m$ be a partition of $\Omega$. Let $A, B\subseteq \Omega$. Suppose that for all $k$ with $1\leq k\leq m$, we have the property that
+\[\p{A\cap B\vert U_k} = \p{A\vert U_k}\p{B\vert U_k}.\]
+(This property is called conditional independence with respect to $U_k$.) Suppose, moreover, that $B$ is independent from $U_k$ for all $k$.
+
+Prove that $A$ and $B$ are independent.
+\end{enumerate}
+
+\end{document}
