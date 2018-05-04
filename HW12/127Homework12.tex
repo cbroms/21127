@@ -57,17 +57,31 @@ Complete the following problems. Fully justify each response.
 \item Let $(\Omega, \P)$ be a probability space. Prove that for all $A\subseteq \Omega$, $\p{\Omega\ba A} = 1-\p{A}$.
 
 \begin{proof}
-We know that $\p{A_1 \cup A_2} = \p{A_1} + \p{A_2} - \p{A_1 \cap A_2}$. 
+We know that $\Omega \cap A = A$ and $\Omega \ba A$ is disjoint. Thus, $(\Omega \ba A) \cup A = \Omega $. Hence, $$ 1 = \p{\Omega} = \p{\Omega \ba A } + \p{A}$$
+Therefore, this implies that $\p{\Omega \ba A} = 1 - \p{A}$.  
 \end{proof}
 
 \item Let $(\Omega, \P)$ be a probability space, and let $A, B\subseteq \Omega$. Prove the following:
 \begin{enumerate}
 \item For all $\omega\in\Omega$, $i_{A\cup B}(\omega) = i_{A}(\omega)+i_{B}(\omega)-i_{A}(\omega)i_{B}(\omega)$
+
+\begin{proof}
+We know that $i_{A\cap B} = i_Ai_B$. By the inclusion exclusion principle, $i_{A\cup B} = i_A + i_B - i_{A \cap B}$. Thus, we have that $i_{A\cup B} = i_A + i_B - i_Ai_B$.  
+\end{proof}
 \item For all $\omega\in\Omega$, $i_{A^c}(\omega) = 1-i_A(\omega)$.
+
+\begin{proof}
+We know that $i_{\Omega} = 1$. Following from the first question, we know that $i_{\Omega \ba A} = 1 - i_A$. Since $\Omega \ba A = A^c$ by definition, we have that $i_{A^c}(\omega) = 1-i_A(\omega)$.
+\end{proof}
 \item For all $\omega\in\Omega$, $i_{A\ba B}(\omega) = i_A(\omega)(1-i_B(\omega))$
+\begin{proof}
+We knwo that $i_{A\ba B} = i_{A \cap B^c} = i_Ai_{B^c}$, by defintion of intersection. And using the previously proven fact (2B), we have that $i_A(1- i_B)$. 
+\end{proof}
 \end{enumerate}
 
 \item You play the following game with a friend: You flip a fair coin 5 times. If it comes up heads, your friend gives you a dollar, and if it comes up tails, you give your friend a dollar. What is the probability that you end the game with more money than you started with?
+
+In order to end up with more money than you started with, you would need to win at least 3 of the 5 coin flips. This means we are looking for the probability that there are 3 or more heads landed. So, we can add up the probabilities that 3, 4, and 5 coin flips are heads. So, by defintion of probability, we know that $\p{A} = \frac{|A|}{|\Omega|}$. In this situation, we add $\p{\text{3 heads are landed}} + \p{\text{4 heads are landed}} + \p{\text{5 heads are landed}}$, all the winning sinarios. We know that $|\Omega| = 2^5$, as there are 5 flips and 2 possible outcomes for each. Thus, $\frac{\binom{5}{3}}{2^{5}} + \frac{\binom{5}{4}}{2^{5}} + \frac{\binom{5}{5}}{2^{5}} = \frac{1}{2}$.
 
 \item You have a drawer containing 6 socks, 3 black and 3 white. Every day for 3 days, you take 2 socks at random out of the drawer.
 \begin{enumerate}
