@@ -44,7 +44,7 @@
 \newcommand{\Mod}[1]{\ (\bmod\ #1)}
 
 \begin{document}
-\title{21-127 Homework 11
+\title{21-127 Homework 12
 }
 \author{Christian Broms \\ Section J}
 \date{\today}
@@ -66,16 +66,16 @@ Therefore, this implies that $\p{\Omega \ba A} = 1 - \p{A}$.
 \item For all $\omega\in\Omega$, $i_{A\cup B}(\omega) = i_{A}(\omega)+i_{B}(\omega)-i_{A}(\omega)i_{B}(\omega)$
 
 \begin{proof}
-We know that $i_{A\cap B} = i_Ai_B$. By the inclusion exclusion principle, $i_{A\cup B} = i_A + i_B - i_{A \cap B}$. Thus, we have that $i_{A\cup B} = i_A + i_B - i_Ai_B$.  
+We know that $i_{A\cap B}(\omega) = i_A(\omega)i_B(\omega)$. By the inclusion exclusion principle, $i_{A\cup B}(\omega) = i_A(\omega) + i_B(\omega) - i_{A \cap B}(\omega)$. Thus, we have that $i_{A\cup B}(\omega) = i_A(\omega) + i_B(\omega) - i_A(\omega)i_B(\omega)$.  
 \end{proof}
 \item For all $\omega\in\Omega$, $i_{A^c}(\omega) = 1-i_A(\omega)$.
 
 \begin{proof}
-We know that $i_{\Omega} = 1$. Following from the first question, we know that $i_{\Omega \ba A} = 1 - i_A$. Since $\Omega \ba A = A^c$ by definition, we have that $i_{A^c}(\omega) = 1-i_A(\omega)$.
+We know that $i_{\Omega}(\omega) = 1$. Following from the first question, we know that $i_{\Omega \ba A}(\omega) = 1 - i_A(\omega)$. Since $\Omega \ba A = A^c$ by definition, we have that $i_{A^c}(\omega) = 1-i_A(\omega)$.
 \end{proof}
 \item For all $\omega\in\Omega$, $i_{A\ba B}(\omega) = i_A(\omega)(1-i_B(\omega))$
 \begin{proof}
-We knwo that $i_{A\ba B} = i_{A \cap B^c} = i_Ai_{B^c}$, by defintion of intersection. And using the previously proven fact (2B), we have that $i_A(1- i_B)$. 
+We knwo that $i_{A\ba B}(\omega) = i_{A \cap B^c}(\omega) = i_A(\omega)i_{B^c}(\omega)$, by defintion of intersection. And using the previously proven fact (2B), we have that $i_A(\omega)(1- i_B(\omega))$. 
 \end{proof}
 \end{enumerate}
 
@@ -86,24 +86,61 @@ In order to end up with more money than you started with, you would need to win 
 \item You have a drawer containing 6 socks, 3 black and 3 white. Every day for 3 days, you take 2 socks at random out of the drawer.
 \begin{enumerate}
 \item  What is the probability that you choose $k$ matching pairs of socks, for any choice of $k$ between 0 and 3?
+
+It is impossible to choose 1 or 3 matching pairs only, so $\p{k}$ at 1, 3 is 0. So, we need to calculate $\p{0}$ and $\p{2}$. First, we will determine $\p{0}$. This is the case where all three pairs of socks selected are unmatching. This is like choosing one black and one white on each day. So, we have $\frac{\binom{3}{1}\binom{3}{1}}{\binom{6}{2}} = \frac{3}{5}$. This is the probability of choosing one black sock and one white sock, over the probability of choosing two arbitrary socks. In this case, we will need to select another pair of non-matching socks, so we need to choose four socks, two black and two white. So, by the same logic, $\frac{\binom{2}{1}\binom{2}{1}}{\binom{4}{2}} = \frac{2}{3}$. Now, it is clear that there must be two socks left, one white and one black, so the probability of choosing them is 1. So, $(\frac{3}{5})(\frac{2}{3})(1) = \frac{2}{5}$. 
+
+In the other case, $\p{2}$, since it is the only other possiblility, we can subtract the previous probability from 1 to get $\frac{3}{5}$, since $\Omega$ is comprised of just these two probabilities. 
+
 \item What is the expected number of matching pairs of socks you pick?
+
+We can calculate $\mathbb{E}[X] = \sum_{e\in E} f_X(e) \cdot e$. So, $E = \{0, 1, 2, 3\}$, and 
+\begin{align*}
+\mathbb{E}[X] &= f_X(0)\cdot 0 + f_X(1)\cdot 1 + f_X(2)\cdot 2 + f_X(3)\cdot 3 \\
+&= \frac{2}{5}\cdot 0 + 0\cdot 1 + \frac{3}{5}\cdot 2 + 0\cdot 3 \\
+&= \frac{6}{5}
+\end{align*} 
 \end{enumerate}
 
 \item You get a job after college as a public pollster. Each week, you select 1000 people from the country at random and ask them if they approve or disapprove of the job the president is doing. You then report the average approval in a news article.
 \begin{enumerate}
 \item Explain how the average approval you report can be seen as a random variable.
+
+The approval rating would most certainly be a random variable. This is because it takes the opinion of 1000 people and maps it to an approval rating between 0 and 1. So, $\Omega = \{\text{1000 people}\}$ and the random variable $X:\Omega \to E$, where $E = \{0, 1\}$, so $X(\omega) = 1$ when someone approves, and $X(\omega) = 0$ when someone disaproves.
+
 \item What distribution does your random variable follow? Why? What do the parameters represent?
+
+The variable would follow a Bernoulli Distribution, as we are asking a True/False question, and the values of the responses fall in $0 \leq p \leq 1$ and $0 \leq q \leq 1$, where $p$ and $q$ are the percentage of people that approve and dissaprove, respectively, and $q = 1- p$. 
+
 \item Without calculating, discuss (mathematically!) how you could consider the question of accuracy in your poll.
+
+Since it is a Bernoulli Distribution, there exists some variable $p$ that indicates the probability of someone approving of the president. Randomly selecting people, each person has the probability $p$ of approving of the president and $1-p$ of not approving of the president. The poll is very accurate, since this is a Bernoulli Distribution, the sample size will be more accurate within the first few powers of ten in sample size, but anything past 1,000 will only reduce the marign of error marginally, since the probability of not acheiving $p'$ decreases exponentially every power of 10. So, 1,000 is clearly large enough to achieve an under 10 percent margin of error. 
 \end{enumerate}
 
 \item Use the fact that 
 \[\sum_{n\in\N} nx^{n-1} = \frac{1}{(1-x)^2}\]
 to calculate the expected value a geometrically distributed random variable.
 
+\begin{proof}
+We know that in a geometric distribution, $\p{X = k} = (1-p)^kp$. Thus, we calculate the expected value as:
+\begin{align*}
+\mathbb{E}[X] &= \sum_{k=0} (1-p)^kp k && \text{by defintion of $\mathbb{E}[X]$}\\
+&= p\sum_{k=0} (1-p)^kk \\
+&= p(1-p)\sum_{k=0} (1-p)^{k-1}k \\
+&= p(1-p) \frac{1}{(1-p)^2} && \text{by fact above}\\
+\mathbb{E}[X] &= \frac{1 - p}{p} 
+\end{align*}
+Thus, we conclude that the expected value of a geometrically distributed random variable is $\frac{1-p}{p}$
+\end{proof}
+
 \item Suppose you have a box containing 3 coins. Two of these coins are normal, but one is a trick coin that has both sides as heads. You pick a coin and flip it twice.
 \begin{enumerate}
 \item What is the probability that you get heads twice?
+
+We can determine the probability by adding $\p{\text{selecting the trick coin}} + \p{\text{selecting normal coin}}\p{\text{first flip heads}}\p{\text{second flip heads}}$. So, $\frac{1}{3} + \frac{2}{3}\cdot \frac{1}{2}\cdot \frac{1}{2} = \frac{1}{6} + \frac{1}{3}= \frac{1}{2}$.
+
 \item Suppose the coin shows heads twice. What is the probability that it is the trick coin?
+
+We can take $\frac{\p{\text{selecting trick coin}}}{\p{\text{getting two heads}}} = \frac{\frac{1}{3}}{\frac{1}{2}} = \frac{2}{3}$. 
 \end{enumerate}
 
 \item Let $(\Omega, \P)$ be a probability space, and let $U_1, U_2, \dots, U_m$ be a partition of $\Omega$. Let $A, B\subseteq \Omega$. Suppose that for all $k$ with $1\leq k\leq m$, we have the property that
@@ -111,6 +148,19 @@ to calculate the expected value a geometrically distributed random variable.
 (This property is called conditional independence with respect to $U_k$.) Suppose, moreover, that $B$ is independent from $U_k$ for all $k$.
 
 Prove that $A$ and $B$ are independent.
+
+\begin{proof}
+We can prove that $A$ and $B$ are independent by showing $\p{A \cap B} = \p{B}\p{A}$. So,
+
+\begin{align*}
+\p{A \cap B} &= \p{A \cap B | U_k}\p{U_k} + \p{A \cap B | (U_k)^c}\p{(U_k)^c} \\
+&= \p{A | U_k}\p{B|U_k}\p{U_k} + \p{A | (U_k)^c}\p{B|(U_k)^c}\p{(U_k)^c} \\
+&= \p{A | U_k}\p{B}\p{U_k} + \p{A | (U_k)^c}\p{B}\p{(U_k)^c} \\
+&= \p{B}(\p{A | U_k}\p{U_k} + \p{A | (U_k)^c}\p{(U_k)^c}) \\
+&= \p{B}\p{A}
+\end{align*}
+Thus, we conclude that $A$ and $B$ are independant. 
+\end{proof}
 \end{enumerate}
 
 \end{document}
