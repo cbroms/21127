@@ -86,17 +86,16 @@ Prove that $\{x\in \Q\ | \ x^2\leq 2\hbox{ or } x<0\}$ is a cut.
 
 Case 1: $x < 0$. 
 \begin{enumerate}
-\item Suppose $x, y \in \Q$,  $x \in A$, and $y \leq x$.  Since $x \in A$, $x < 0$, and since $y \leq x$, it must be that $y < 0$ as well, by transitivity. 
+\item Suppose $x, y \in \Q$,  $x \in A$, and $y \leq x$.  Since $x \in A$, $x < 0$, and since $y \leq x$, it must be that $y < 0$ as well, by transitivity. So, $y \in A$.
 \item The upper bound of $x < 0$ is 0, since $\forall x \in A$, where $x < 0$, $x \ngeq 0$. Thus, 0 is an upper bound.
-
-\item (Do this case) 
+\item We know that $A \subseteq \Q$ and $\Q$ is infinite. So, given that $x > 0$, it follows that $\forall x \in A$, $\exists y \in A$ such that $x < y$. 
 \end{enumerate}
 
 Case 2: $x^2\leq 2$
 \begin{enumerate}
-\item (Do this case) 
-\item (Do this case) 
-\item (Do this case) 
+\item Suppose $x, y \in \Q$ and $y \geq 0, y < x$. We know that $x - y > 0$, as proven previously. Additionally, we have that $x + y > y$ since $x > 0$, and since $y \geq 0$ and $x + y > y$, then $x + y > 0$. So, we have $x + y > 0$ and $x - y > 0$, thus $(x - y)(x + y) \geq 0$, from the ordered field axioms. Simplifying, we get $x^2 - y^2 \geq 0$ and $x^2 \geq y^2$. Since $x^2 \leq 2$ and $y^2 \leq x^2$, we have that $y^2 \leq 2$, so we conclude that $y \in A$. 
+\item The upper bound of $x^2 \leq 2$ is $\sqrt{2}$, which we can derive from the fact that $0 < 1$, so $0 < \sqrt{2}$. To prove the existence of a rational upper bound, we get that $2 \geq \sqrt{2}$, so $\forall a \in A$, $a \leq \sqrt{2}$, so 2 is also an upper bound. Given that $2 \in \Q$, we can conclude that $A$ has a rational upper bound.  
+\item Let $x \in A$. Since $A \subseteq \Q$, we know that $x$ is rational. So, we know that $\forall x \in A$, $\exists y \in A$ such that $x < y$ since $\sqrt{2}$ is an upper bound that is not rational, so all elements must be less than $\sqrt{2}$ and are infinitely decreasing. 
 \end{enumerate}
 
 \end{proof}
