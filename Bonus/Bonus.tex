@@ -46,65 +46,64 @@
 
 
 \begin{document}
-\title{Math 127 Extra Credit Homework}
-\author{Mary Radcliffe}
+\title{21-127 Bonus}
+\author{Christian Broms}
+
 \maketitle
 
-The purpose of this set of problems is to prove that the real numbers exist; that is, that we can construct a complete ordered field, and that this construction is unique in a certain sense. Let us begin with what we shall assume.
 
-We make the following assumptions to begin the construction.
-\begin{itemize}
-\item We know the integers and the rationals.
-\item We know that $\Q$ under the usual definition of addition and multiplication is a field.
-\item We know that $\Q$ under the usual definition of ordering is an ordered field.
-\end{itemize}
-
-We now begin with a construction of $\R$ from $\Q$.
-
-\begin{definition}
-Let $A\subseteq \Q$. We say that $A$ is a {\it cut} if\begin{enumerate}
-\item If $x, y\in \Q$, with $x\in A$, and $y\leq x$, then $y\in A$.
-\item $A$ has an upper bound in $\Q$.
-\item For every $x\in A$, there exists $y\in A$ such that $x<y$.
-\end{enumerate}
-\end{definition}
-
-Let's first understand what this is.
 \begin{exercise}
 Prove that if $A$ is a cut, and $r\notin A$, then $p<r$ for every $p\in A$.
 \end{exercise}
 
-So the idea with a cut is that we're literally slicing the rationals into two parts, a left side and a right side, and then we take the left side to be the set $A$. The place where we slice is what makes the cut special. In particular, we could choose to slice exactly at a rational:
+\begin{proof}
+By the first property of a cut, we have that for $x, y \in \Q$, if $y \leq x$, then $y \in A$, where $A \subseteq \Q$. If $r \notin A$, $p \in A$, then $r \nleq p$ because this would contradict the defintion of a cut. Thus, it must be that $r > p$, and therefore we have that $p < r$ for every $p \in A$. 
+\end{proof}
+
 
 \begin{exercise}\label{ratcuts}
 Prove that for any $q\in \Q$, there exists a cut $A_q$ for which $q$ is a least upper bound.
 \end{exercise}
 
+\begin{proof}
+Assume for some $q \in \Q$, $A_q \subseteq \Q$. By the second property of a cut, $A_q$ has an upper bound at $q$. Thus, we have that $q \geq a\ \forall a \in A_q$. Additionally, if $q' \geq a\ \forall a \in A_q$, then $q' \geq q$. Therefore the properties of a least upper bound are fufilled and we can conclude that for any $q\in \Q$, there exists a cut $A_q$ for which $q$ is a least upper bound.
+\end{proof}
+
 \begin{exercise}\label{ratorder}
 Prove that if $p, q\in \Q$, with $p< q$, then $A_p\subset A_q$.
 \end{exercise}
 
-Excellent, so we can identify an element $q$ of $\Q$ with a cut, by constructing a cut $A_q$ that ``ends'' at $q$. And smaller elements of $\Q$ have strictly smaller cuts. But we can do even better! We can identify elements that aren't even in $\Q$ at all. 
+\begin{proof}
+Let $x \in A_p$. By Exercise 2 we know that $x < p$. Since $p < q$, then $x < q$ due to the transitive property of $\Q$, an ordered field. If $x < q$, and $q$ is the least upper bound of $A_q$, then $x \in A_q$ by definition of least upper bound. Thus, we have that $A_p\subset A_q$. 
+\end{proof}
 
 \begin{exercise}\label{sqrtcut}
 Prove that $\{x\in \Q\ | \ x^2\leq 2\hbox{ or } x<0\}$ is a cut.
 \end{exercise}
 
-Wow, neat, we were able to construct a cut whose slice is at $\sqrt{2}$. So what if we were able to use cuts to represent all the numbers? As we see above, when $p, q$ are rational we can represent $q$ with $A_q$, and $p<q$ gives us that $A_p\subset A_q$. But we have other cuts, like the one in Exercise \ref{sqrtcut}, that represent irrational numbers. So let's try to define a ordered field structure on the {\it cuts themselves}, allowing a cut to stand in for the number at which we slice the rationals. We begin with the ordering part.
+\begin{proof}
+ Set $A = \{x\in \Q\ | \ x^2\leq 2\hbox{ or } x<0\}$. We wish to show that $A$ fufills the properties of a cut. There are two cases, either $x < 0$ or $x^2\leq 2$. 
 
-\begin{definition}
-Let $\mathcal{C} = \{A\subseteq \Q\ | \ A\hbox{ is a cut}\}$. Define an ordering on $\mathcal{C}$ by $A\leq B$ if and only if $A\subseteq B$.
-\end{definition}
+Case 1: $x < 0$. 
+\begin{enumerate}
+\item Suppose $x, y \in \Q$,  $x \in A$, and $y \leq x$.  Since $x \in A$, $x < 0$, and since $y \leq x$, it must be that $y < 0$ as well, by transitivity. 
+\item The upper bound of $x < 0$ is 0, since $\forall x \in A$, where $x < 0$, $x \ngeq 0$. Thus, 0 is an upper bound.
+
+\item (Do this case) 
+\end{enumerate}
+
+Case 2: $x^2\leq 2$
+\begin{enumerate}
+\item (Do this case) 
+\item (Do this case) 
+\item (Do this case) 
+\end{enumerate}
+
+\end{proof}
 
 \begin{exercise}
 Prove that the ordering defined above is a total order; that is, it is a partial order, and any two elements of $\mathcal{C}$ are comparable.
 \end{exercise}
-
-Excellent, partway there. Now, to think about operations. In order to define a field structure, we need a 0 and 1, so we will take these elements as $A_0$ and $A_1$, as defined in Exercise \ref{ratcuts}. Note that by what we proved in Exercise \ref{ratorder}, we have that $A_0<A_1$, so $A_0\neq A_1$. We'll start by defining addition.
-
-\begin{definition}
-Let $A, B\in \mathcal{C}$. Define $A+B = \{p+q\ | \ p\in A\hbox{ and }q\in B\}$.
-\end{definition}
 
 \begin{exercise}
 Prove the following are true about this definition of addition:
@@ -118,18 +117,44 @@ Prove the following are true about this definition of addition:
 \end{enumerate}
 \end{exercise}
 
-Note: In the rest of this work, we shall refer to the set $B$ constructed in part 4 above as $-A$. Just to check that this makes sense to us, and is consistent with how we think that addition should work in $\Q$:
+\begin{proof}
+\begin{enumerate}
+
+\item Closure: We will prove that $A + B$ fufills the properties of a cut. 
+\begin{enumerate}
+\item We will prove if $x, y \in \Q$, $x \in A+B$, and $ y \leq x$, then $y \in A + B$. There are two cases, either $y < x$ or $y = x$. 
+
+Case 1: $y < x$. Let $y = a + b$, such that $a \in A$ with $a < p$, and $b \in B$, with $b < q$. We have the property that $a + b < p + q$ since $a < p$ and $b < q$, as proven in a previous homework. Since $A$ and $B$ are cuts, and $A$ contains all elements less than $p$ and $B$ has all elements less than $q$, then $a + b$ represents all elements less than $p + q$. So, we have that $y \in A + B$. 
+
+Case 2: $y = x$. Let $y = p + q$. Clearly, it follows that $y \in A + B$. 
+
+Thus, in both cases, we get $y \in A + B$. 
+
+\item Since $A$ and $B$ are cuts, they both have upper bounds. Let the upper bounds be denoted $a$ and $b$, respectively. Let $p + q \in A + B$ such that $p \in A$ and $q \in B$. So, $ p \leq a$ and $q \leq b$, so we have the property that $p + q \leq a + b$, as proven previously. Thus, by defintion, $a + b$ is an upper bound. 
+
+\item Let $x = a + b$, with $a \in A$ and $b \in B$. Then $\forall a \in A$, $\exists p \in A$ such that $a < p$. Similarly, $\forall b \in B$, $\exists q \in A$ such that $b < q$. So, $ a+ b < p + q$, as previously proven. Thus, there exists some $y = p + q$ such that $\forall x \in A + B$, $\exists y \in A + B$ with $x < y$.  
+\end{enumerate}
+Thus, since $A+B$ fufills all three properties, it must be a cut. 
+
+\item Associativity: Let $A + (B + C) = \{a + (b + c)\ |\ a \in A, b \in B , c \in C\}$ and $(A + B) + C = \{(a + b) + c\ |\ a \in A, b \in B , c \in C\}$. We have that $a + (b + c) = (a + b) + c$ by the axiom of associativity of addition. Suppose $p \in A + (B + C)$ and $q \in (A + B) + C$, so $ p = a + (b + c)$ and $q = (a + b) + c$. Thus, $p= q$. So, $ p \in (A + B) + C $ and $q \in A + (B + C)$. Since $p$ and $q$ are elements of both sets, it follows that $A + (B + C) \subseteq (A + B) + C$ and $(A + B) + C \subseteq A + (B + C) $, so $(A + B) + C = A + (B + C) $. 
+
+\item Identity: Let $A + A_0 = \{p + q\ |\ p \in A, q \in A_0\}$. Suppose $q = 0$. Then $p + q = p + 0 = p$ by the first field axiom. Since $ p + q = p\ \forall p$ when $q = 0$, then $\forall p \in A$, $p \in A + A_0$. So, $ A \subseteq A + A_0$. To prove that $A + A_0 \subseteq A$, there are two cases, $q = 0$ and $q < 0$. 
+
+Case 1: Let $q < 0$. Then , $p + q < p$. So, $p + q \in A$. 
+
+
+Case 2: Let $q = 0$.Then $p + q \in A + A_0$ and $p + q = p + 0 = p$, so $p + q \in A$. 
+
+Thus, $A + A_0 \subseteq A$. Since we have shown both sides of containment, we conclude that $ A = A+ A_0$. 
+\item Existence of Inverses: (prove this case)
+\item Communitivity: Let $A + B = \{ a + b\ |\ a \in A, b \in B\}$ and $B + A = \{ b + a\ |\ a \in A, b \in B\}$. So, we know that $\forall a + b \in A + B, \exists a + b \in B + A$, since $a + b = b + a$ by communitivity of addition. So, $A + B \subseteq B + A$. Using the same logic, we get $B + A \subseteq A + B$, so we conclude that $ A + B = B + A$. 
+\item Order Arithmatic: (prove this case).
+\end{enumerate}
+\end{proof}
 
 \begin{exercise}
 Let $p\in \Q$. Prove that $-A_p=A_{-p}$.
 \end{exercise}
-
-Neat, so we have now all the necessary properties for addition to make sense in our universe of cuts. It even plays well with the ordering we defined above! So the last thing we need in order to make sure this is an ordered field is a definition of multiplication. Warning: it's gonna look kinda weird. The reason that it looks weird is that when we do multiplication in the real numbers, something strange happens with negatives that we need to take care to account for with our cuts. Here's the problem. The cuts we're interested in are effectively left rays in $\Q$. We're taking all the rational numbers, down to $-\infty$, ending somewhere on the number line. But the problem is that if we had two negative numbers, when we multiply the values in their cuts together, we'll end up with a right ray in $\Q$, because the products of all those negatives become positives, and they go off to infinity. So we need to take especial care to ensure that when we do our products, we still end up with left rays, and they still represent what we want them to represent. So. Here we go.
-
-\begin{definition}
-Let $A, B\in \mathcal{C}$. If $A> A_0$ and $B> A_0$, define 
-\[A\cdot B = \{pq\in \Q\ | p\in A, q\in B, \hbox{ and }p, q\hbox{ are not both negative}.\}\]
-\end{definition}
 
 \begin{exercise}
 Prove that for $A, B> A_0$, the definition of $A\cdot B$ above yields a cut; that is, $A\cdot B\in \mathcal{C}$.
@@ -139,37 +164,11 @@ Prove that for $A, B> A_0$, the definition of $A\cdot B$ above yields a cut; tha
 Prove that if $p, q\in \Q$, and $p, q> 0$, then $A_p\cdot A_q = A_{pq}$.
 \end{exercise}
 
-Ok, good. So we have a definition of multiplication for positive numbers that makes sense. We'll define multiplication for negative numbers just by manipulation of the signs.
-
-\begin{definition}
-Let $A, B\in \mathcal{C}$. Define $A\cdot B$ as follows:
-\[\begin{array}{ll} A\cdot B = A_0 & \hbox{if }A=A_0 \hbox{ or }B=A_0\\A\cdot B & \hbox{if }A> A_0, B> A_0\\-((-A)\cdot B) & \hbox{if }A<A_0, B> A_0\\-(A\cdot (-B)) & \hbox{if }A> A_0, B<A_0\\((-A)\cdot (-B)) & \hbox{if }A<A_0, B<A_0\end{array}\]
-\end{definition}
-
-Whew, that's a lot of definition. And the bad news is that we still need to prove that this satisfies all the axioms for multiplication. That seems tough. So to facilitate that proof, let's get a little lemma first.
-
 \begin{exercise}\label{negmove}
 For all $A, B\in \mathcal{C}$, prove that $-(A\cdot B) = (-A)\cdot B=A\cdot(-B)$.
 
 (Note: You will need to consider cases, depending on the sign of $A$ and $B$.)
 \end{exercise}
-
-Ok, so this exercise allows us to move negative signs through our products. That seems valuable for proving the other properties we care about for multiplication. For example, suppose we wanted to prove that multiplication is associative. First, we can start by looking at the case that $A, B, C$ are all positive. In that case, we have
-\begin{eqnarray*}
-A\cdot (B\cdot C) &=& \{p(rs)\ | \ p\in A, r\in B, s\in C,\ p, rs\hbox{ not both negative, $r, s$ not both negative}\}
-\end{eqnarray*}
-
-Note, if $p>0$, then $r$ can be negative or positive. If $p<0$, then $rs>0$, and since $r, s$ are not both negative, it must be the case that $r>0$. Hence, we have that $p$ and $r$ are not both negative. Moreover, if $pr<0$, then one of $p,r$ is negative. If it is $p$, then $r>0$, and $rs>0$, so $s>0$. If it is $r$, then since $r,s$ are not both negative, $s>0$. In any case, we have that the condition listed above is equivalent to the condition that $p, r$ are not both negative, and $pr, s$ are not both negative; that is, $pr\in A\cdot B$ and $s\in C$. Thus, this is the same as taking $(A\cdot B)\cdot C$.
-
-Hence, in the case that all three of $A, B, C$ are positive, multiplication is associative. In the other cases, we may apply the result of Exercise \ref{negmove}:
-
-\noindent If $A<0, B>0, C>0$:
-\[A\cdot (B\cdot C) = -((-A)\cdot (B\cdot C))= -(((-A)\cdot B)\cdot C) = -(-(A\cdot B)\cdot C) = (A\cdot B)\cdot C.\]
-If $A>0, B<0, C>0$:
-\[A\cdot (B\cdot C) = A\cdot (-((-B)\cdot C)) = -(A\cdot ((-B)\cdot C)) = -(A\cdot (-B))\cdot C = (A\cdot B)\cdot C.\]
-And so on. There are technically 8 cases to check, three of which are done here, but the other 5 are very similar. 
-
-The remaining properties can be checked in a similar way: first verify the property is true for positive cuts, and then extend that to negative cuts.
 
 \begin{exercise}Prove the following are true about this definition of multiplication:
 \begin{enumerate}
@@ -181,47 +180,8 @@ The remaining properties can be checked in a similar way: first verify the prope
 \end{enumerate}
 \end{exercise}
 
-Fantastic, things are going super well! Let's get a quick summary of what we've done up to this point.
-\begin{itemize}
-\item We defined a set $\mathcal{C}$.
-\item We endowed $\mathcal{C}$ with a linear order.
-\item We defined addition and multiplication in $\mathcal{C}$
-\item We proved that the order, addition, and multiplication satisfy all the axioms for an ordered field.
-\end{itemize}
-
-So, one thing left. We want to make sure that the ordered field we just made is complete. Recall, that means that for any subset of $\mathcal{C}$, there is a supremum for that set. Recall also that in $\mathcal{C}$, we have that the ordering is the same as in the power set lattice defined before: $A\leq B$ if and only if $A\subseteq B$. And, doubly good news, we already know how to take suprema in the power set lattice. Put those pieces together to solve the next exercise:
-
 \begin{exercise}
 Let $\mathcal{A}\subseteq \mathcal{C}$ be a set of cuts. Prove that there exists $S\in \mathcal{C}$ that satisfies the definition of a supremum.
 \end{exercise}
-
-So now, we have that $\mathcal{C}$ is not just an ordered field, it also has the property that every subset in $\mathcal{C}$ has a supremum. You've just proved the following theorem:
-
-\begin{theorem}
-As defined here, $\mathcal{C}$ is a complete ordered field.
-\end{theorem}
-
-In order to define the real numbers, then, we'll just say that $\mathcal{C}$ is them. We just stop using capital letters, and then, bam, real numbers. The rationals live inside this, hiding as what we've called $A_q$, and behave just like we expect. The behavior we get on all the other numbers is just an extension of what's going on in the rationals anyways.
-
-One more point. Which we won't prove here. Let's get a real definition of what we mean by uniqueness. The theorem we would prove (which you can try, if you'd like) is as follows:
-
-\begin{theorem}
-Let $X$ be any complete ordered field. Then there exists a bijective function $f:X\to \mathcal{C}$ satisfying the following:
-\begin{enumerate}
-\item $x\leq_X y$ if and only if $f(x)\leq f(y)$ (that is, $f$ doesn't change the ordering)
-\item $f(x+y) = f(x)+f(y)$ (that is, $f$ doesn't change the addition)
-\item $f(x\cdot y) = f(x)\cdot f(y)$ (that is, $f$ doesn't change the multiplication)
-\end{enumerate}
-\end{theorem}
-
-So what's this here? We have a function between $X$ and $\mathcal{C}$, it's bijective, and doing the function doesn't change any of the field or ordering structure? In what way, then, are $X$ and $\mathcal{C}$ actually different? Answer: in no way at all. They're the same in every measurable way. So if you think you have a different complete ordered field, you don't really, because it must be the same as $\mathcal{C}$ in every way possible. This is what we mean by uniqueness.
-
-The proof of this theorem is technical, and if you've gotten this far you've already done plenty of technical stuff. But basically, here's how the proof goes. First, show that any complete ordered field has to have $\Q$ as a subset. This is straightforward, since it will have to have $\Z$ as a subset (due to repeated addition of 1) and then will have to have all quotients in $\Z$ (hence $\Q$). This will instantly imply that $\Q\subseteq X$. 
-
-Then, take subsets in $\Q$. In particular, if you take subsets corresponding to cuts, the upper bounds must be members of $X$ too. So it has to contain everything we defined in $\mathcal{C}$, and the addition and multiplication and ordering must satisfy all the same structure as in $\mathcal{C}$. This gives us an injection from $\mathcal{C}$ to $X$ that satisfies the conditions in the theorem. We need only show that this injection is also surjective.
-
-Once that is finished, we have that there is only one complete ordered field. In the whole universe. In all of mathematics. Just the one.
-
-Cool.
 
 \end{document}
