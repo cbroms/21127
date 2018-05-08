@@ -1,0 +1,277 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{datetime}
+\usepackage{subcaption}
+\usepackage{amsmath, epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\let\olddefinition\theorem
+\renewcommand{\theorem}{\olddefinition\normalfont}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+\newcommand{\solution}[1]{
+\color{red}\begin{quote}Solution:\quad 
+\color{black} #1
+\end{quote}\color{black}
+}
+\newcommand{\ba}{\backslash}
+\newcommand{\Ber}{\hbox{Ber}}
+\DeclareMathOperator{\Gcd}{gcd}
+\renewcommand{\gcd}[2]{\Gcd\left(#1, #2\right)}
+\newcommand{\e}[1]{\mathbb{E}(#1)}
+\newcommand{\Po}[1]{\hbox{Po}(#1)}
+\newcommand{\var}[1]{\hbox{Var}(#1)}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Diam}{diam}
+\newcommand{\diam}[1]{\Diam\left(#1\right)}
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\p}[1]{\P\left(#1\right)}
+\newcommand{\Mod}[1]{\ (\bmod\ #1)}
+
+
+\begin{document}
+\title{21-127 Final Theorems \& Definitions}
+\author{Christian Broms}
+\date{\today}
+\maketitle
+
+\section{Theorems}
+
+
+\begin{theorem}
+WEAK INDUCTION PRINCIPLE. Let $p(n)$ be a satement about natural numbers, and let $b \in \N$. If 
+\begin{enumerate}
+    \item $p(b)$ is true; and
+    \item For all $n \geq b$, if $p(n)$ is true, then $p(n+1)$ is true;
+\end{enumerate}
+then $p(n)$ is true for all $n \geq b$. 
+\end{theorem}
+
+
+\begin{theorem}
+STRONG INDUCTION PRINCIPLE. Let $p(x)$ be a satement about natural numbers, and let $b \in \N$. If 
+\begin{enumerate}
+    \item $p(b)$ is true; and
+    \item For all $n \geq \N$, if $p(k)$ is true for all $b \leq k \leq n$, then $p(n+1)$ is true;
+\end{enumerate}
+then $p(n)$ is true for all $n \geq b$. 
+\end{theorem}
+
+
+\begin{theorem}
+BINOMIAL THEOREM. Let $n \in \N$ and $x, y \in \R$. Then
+$$(x + y)^n = \sum_{k=0}^{n}\binom{n}{k}x^k y^{n-k}$$
+\end{theorem}
+
+
+\begin{theorem}
+WELL ORDERING PRINCIPLE. Let $X$ be a set of natural numbers. If $X$ is inhabited, the $X$ has a least element. 
+\end{theorem}
+
+
+\begin{theorem}
+DEMORGAN'S LAWS FOR LOGICAL OPERATORS. Let $p$ and $q$ be propositions. Then
+\begin{enumerate}
+    \item $\neg(p \vee q) \sim (\neg p) \wedge (\neg q)$ 
+    \item $\neg(p \wedge q) \sim (\neg p) \vee (\neg q)$
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+DEMORGAN'S LAWS FOR QUANTIFIERS. Let $p(x)$ be a logical formula. Then
+\begin{enumerate}
+    \item $\neg(\exists x, p(x)) \sim \forall x, (\neg p(x))$ 
+    \item $\neg(\forall x, p(x)) \sim \exists x, (\neg p(x))$
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+DEMORGAN'S LAWS FOR SETS. Let $X, Y, Z$ be sets. Then
+\begin{enumerate}
+    \item $Z\ba (X \cup Y) = (Z \ba X) \cap (Z \ba Y)$
+    \item $Z\ba (X \cap Y) = (Z \ba X) \cup (Z \ba Y)$
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+DIVISION THEOREM. Let $a, b \in \Z$, with $b\neq 0$. There exist uniqe $q, r \in \Z$ such that 
+$$ a = qb + r  \text{ and}\ 0 \leq r < |b|$$
+\end{theorem}
+
+
+\begin{theorem}
+BEZOUT'S LEMMA. Let $a, b, c \in \Z$ and let $d = \gcd{a}{b}$. The equation 
+$$ax + by = c$$
+has a solution $(x,y) \in \Z \times \Z$ if and only if $d | c$.  
+\end{theorem}
+
+
+\begin{theorem}
+FUNDAMENTAL THEOREM OF ARITHMETIC. Let $a \in \Z$ be a non-zero non-unit. There exist primes $p_1, \dots, p_k \in \Z$ such that 
+$$a = p_1 \times \dots \times p_k$$
+Moreover, this expression is essentially unique: if $a = q_1 \times \dots \times q_\ell$ is another expression of $a$ as a product of primes, then $k = \ell$ and, re-ordering the $q_i$ if neccessary, for each $i$ there is a unit $u_i$ such that $q_i = u_ip_i$
+\end{theorem}
+
+
+\begin{theorem}
+[MODULAR PROPERTIES]. Let $a, b, c \in \Z$ and let $n$ be a modulus. Then
+\begin{enumerate}
+    \item $a \equiv a \mod{n}$;
+    \item If $a \equiv b \mod{n}$, then $b \equiv a \mod{n}$;
+    \item If $a \equiv b \mod{n}$ and $b \equiv c \mod{n}$, then $a \equiv c \mod{n}$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+[MODULAR ARITHMATIC]. Fix a modulus $n$ and let $a_1, a_2, b_1, b_2 \in \Z$ such that 
+$$a_1 \equiv b_1 \mod{n}\ \text{and}\ a_2 \equiv b_2 \mod{n}$$
+The following congruences hold
+\begin{enumerate}
+    \item $a_1 + a_2 \equiv b_1 + b_2 \mod{n}$;
+    \item $a_1a_2 \equiv b_1b_2 \mod{n}$;
+    \item $a_1 - a_2 \equiv b_1 - b_2 \mod{n}$;
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+TOTIENT THEOREM. Let $a \in \Z$. The order of $a$ is the least $k \geq 0$ such that $a^k \equiv 1 \mod{n}$. 
+\end{theorem}
+
+
+\begin{theorem}
+FRESHMAN EXPONENTIATION RULE. Let $a, b \in \Z$ and $p $ a positive prime. Then, $(a+b)^p \equiv a^p + b^p \mod{p}$. 
+\end{theorem}
+
+
+\begin{theorem}
+FERMAT'S LITTLE THEOREM. Let $a, p \in \Z$ with $p$ a positive prime. Then $a^p \equiv a \mod{p}$. 
+\end{theorem}
+
+
+\begin{theorem}
+EULER'S THEOREM. Let $n$ be a modulus and let $a \in \Z$ with $a \perp n$. Then
+$$a^{\varphi(n)} \equiv 1 \mod{n}$$
+\end{theorem}
+
+
+\begin{theorem}
+WILSON'S THEOREM. Let $n > 1$ be a modulus. Then $n$ is prime if and only if $(n-1)! \equiv -1 \mod{n}$.
+\end{theorem}
+
+
+\begin{theorem}
+CHINESE REMAINDER THEOREM. Let $m, n$ be moduli and let $a, b \in \Z$. If $m$ and $n$ are coprime, then ther exists an integer solution $x$ to the simulaneous congruences 
+$$x \equiv a \mod{n}\ \text{and}\ x \equiv b \mod{n}$$
+Moreover, if $x, y \in \Z$ are two such solutions, then $x \equiv y \mod{mn}$. 
+\end{theorem}
+
+
+\begin{theorem}
+[FUNCTION GENERALIZATIONS]. Let $m, n \in \N$. 
+\begin{enumerate}
+    \item If there exists an injection $f:[m] \to [n]$, then $m \leq n$. 
+    \item If there exists a surjection $g:[m] \to [n]$, then $m \geq n$.
+    \item If there exists a bijection $h:[m] \to [n]$, then $m = n$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+DEMORGAN'S LAWS FOR FINITE SETS. Let $n \in \N$. For each $i \in [n]$ let $X_i$ be a set, and let $Z$ be a set. Then
+\begin{enumerate}
+    \item $Z \ba (\bigcup_{i = 1}^{n}X_i) = \bigcap_{i = 1}^{n}(Z \ba X_i)$
+    \item $Z \ba (\bigcap_{i = 1}^{n}X_i) = \bigcup_{i = 1}^{n}(Z \ba X_i)$
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+MULTIPLICATION PRINCIPLE. Let $\{X_1, \dots, X_n\}$ be a family of finite sets, with $n \geq 1$. Then $\Pi_{i=1}^{n}$ is finite and
+$$|\Pi_{i = 1}^{n}X_i| = |X_1| \cdot |X_2| \cdot \dots \cdot |X_n|$$
+\end{theorem}
+
+
+\begin{theorem}
+INCLUSION-EXCLUSION PRINCIPLE. Let $n \geq 2$ and let $X_1, X_2, \dots, X_n$ be sets. Then 
+$$|\bigcup_{i=1}^{n}X_i| = \sum_{j \subseteq [n]} (-1)^{|J|+1}|\bigcap_{j \in J} X_j|$$
+where for the purposes of the formula we take $\bigcap_{j \in \emptyset}X_j = \emptyset$
+\end{theorem}
+
+
+\begin{theorem}
+DEMORGAN'S LAWS FOR SETS. Let $Z$ be a set and let $\{X_i|i \in I\}$ be an indexed family of sets. Then
+\begin{enumerate}
+    \item $Z\ba \bigcup_{i \in I}X_i = \bigcap_{i \in I}(Z \ba X_i)$
+    \item $Z\ba \bigcap_{i \in I}X_i = \bigcup_{i \in I}(Z \ba X_i)$
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+TRIANGLE INEQUALITY. Let $x, y \in \R$. Then $|x+y| \leq |x| + |y|$. Moreover, $|x + y| = |x| + |y|$ if and only if $x$ and $y$ have the same sign. 
+\end{theorem}
+
+
+\begin{theorem}
+TRIANGLE INEQUALITY (VECTORS). Let $\vec{x}, \vec{y} \in \R^2$. Then
+ $$||\vec{x}+\vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||$$
+with equality if and only if $a\vec{x} = b\vec{y}$ for some real numbers $a, b \geq 0$. 
+\end{theorem}
+
+
+\begin{theorem}
+CAUCHY-SCHWARZ INEQUALITY. Let $n \in N$ and let $x_i, y_i \in \R$ for each $i \in [n]$. Then 
+$$|\vec{x} \cdot \vec{y}| \leq ||\vec{x}||\cdot||\vec{y}||$$
+with equality if and only if $a\vec{x} = b\vec{y}$ for some $a, b \in \R$ which are not both zero. 
+\end{theorem}
+
+
+\begin{theorem}
+SQUEEZE THEOREM. Let $(x_n), (y_n)$ and $(z_n)$ be sequence of real numbers such that 
+\begin{enumerate}
+    \item $(x_n) \to a$ and $(z_n) \to a$; and 
+    \item $x_n \leq y_n \leq z_n$ for all $n \in \N$. 
+\end{enumerate}
+Then $(y_n) \to a$.
+\end{theorem}
+
+
+\begin{theorem}
+MONOTONE CONVERGENCE THEOREM. Let $(x_n)$ be a sequence of real numbers. 
+\begin{enumerate}
+    \item If $(x_n)$ is increasing and has an upper bound, then it converges
+    \item If $(x_n)$ is decreasing and has a lower bound, then it converges
+\end{enumerate}
+\end{theorem}
+
+
+\begin{theorem}
+BAYES' THEOREM. Let $(\Omega, \mathbb{P})$ be a probability space and let $A, B$ be events with positive probabilities. Then 
+$$\mathbb{P}(B | A) = \frac{\mathbb{P}(A | B)\mathbb{P}(B)}{\mathbb{P}(A)}$$
+
+\end{theorem}
+
+\end{document}
